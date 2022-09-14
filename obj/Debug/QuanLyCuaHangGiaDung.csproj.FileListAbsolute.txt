@@ -1,0 +1,35 @@
+C:\Users\DELL\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\bin\Debug\QuanLyCuaHangGiaDung.exe.config
+C:\Users\DELL\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\bin\Debug\QuanLyCuaHangGiaDung.exe
+C:\Users\DELL\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\bin\Debug\QuanLyCuaHangGiaDung.pdb
+C:\Users\DELL\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.csproj.AssemblyReference.cache
+C:\Users\DELL\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.csproj.SuggestedBindingRedirects.cache
+C:\Users\DELL\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.DangNhap.resources
+C:\Users\DELL\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.csproj.GenerateResource.cache
+C:\Users\DELL\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.exe
+C:\Users\DELL\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.pdb
+C:\Users\DELL\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.Properties.Resources.resources
+C:\Users\DELL\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.HeThong.resources
+C:\Users\DELL\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.QuanLyNhanVien.resources
+C:\Users\DELL\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.QuanLyTaiKhoan.resources
+C:\Users\DELL\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.QuanLyNhaCungCap.resources
+C:\Users\DELL\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.QuanLySanPham.resources
+C:\Users\DELL\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.QuanLyHoaDon.resources
+D:\Documents\CNPM\QuanLyCuaHangGiaDung\bin\Debug\QuanLyCuaHangGiaDung.exe.config
+D:\Documents\CNPM\QuanLyCuaHangGiaDung\bin\Debug\QuanLyCuaHangGiaDung.exe
+D:\Documents\CNPM\QuanLyCuaHangGiaDung\bin\Debug\QuanLyCuaHangGiaDung.pdb
+D:\Documents\CNPM\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.csproj.AssemblyReference.cache
+D:\Documents\CNPM\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.csproj.SuggestedBindingRedirects.cache
+D:\Documents\CNPM\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.DangNhap.resources
+D:\Documents\CNPM\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.Properties.Resources.resources
+D:\Documents\CNPM\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.HeThong.resources
+D:\Documents\CNPM\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.QuanLyHoaDon.resources
+D:\Documents\CNPM\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.QuanLyNhaCungCap.resources
+D:\Documents\CNPM\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.QuanLyNhanVien.resources
+D:\Documents\CNPM\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.QuanLySanPham.resources
+D:\Documents\CNPM\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.QuanLyTaiKhoan.resources
+D:\Documents\CNPM\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.csproj.GenerateResource.cache
+D:\Documents\CNPM\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.csproj.CoreCompileInputs.cache
+D:\Documents\CNPM\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.exe
+D:\Documents\CNPM\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.pdb
+D:\Documents\CNPM\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.csproj.ResolveComReference.cache
