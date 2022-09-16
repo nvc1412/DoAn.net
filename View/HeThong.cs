@@ -155,5 +155,12 @@ namespace QuanLyCuaHangGiaDung.View
 
             return false;
         }
+
+        private void btnQlpn_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new View.QuanLyPhieuNhap());
+            setBackColor();
+            btnQlpn.BackColor = System.Drawing.Color.Crimson;
+        }
     }
 }

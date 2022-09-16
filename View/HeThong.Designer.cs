@@ -140,6 +140,7 @@
             this.btnQlpn.TabIndex = 12;
             this.btnQlpn.Text = "QUẢN LÝ PHIẾU NHẬP";
             this.btnQlpn.UseVisualStyleBackColor = false;
+            this.btnQlpn.Click += new System.EventHandler(this.btnQlpn_Click);
             // 
             // btnQlncc
             // 

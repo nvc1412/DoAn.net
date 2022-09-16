@@ -33,3 +33,4 @@ D:\Documents\CNPM\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.csproj.Cor
 D:\Documents\CNPM\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.exe
 D:\Documents\CNPM\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.pdb
 D:\Documents\CNPM\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.csproj.ResolveComReference.cache
+D:\Documents\CNPM\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.QuanLyPhieuNhap.resources
