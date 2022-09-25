@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyCuaHangGiaDung.Model;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -10,15 +11,128 @@ namespace QuanLyCuaHangGiaDung.Controller
 {
     public class NhanVienController
     {
-        public List<Model.NhanVien> getData()
+        private string connect = @"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI";
+        public List<NhanVien> getData()
         {
             try
             {
-                List<Model.NhanVien> data = new List<Model.NhanVien>();
+                List<NhanVien> data = new List<NhanVien>();
 
-                SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
+                SqlConnection conn = new SqlConnection(connect);
                 conn.Open();
                 string Query = "SELECT * FROM NhanVien";
+                SqlCommand cmd = new SqlCommand(Query, conn);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    NhanVien obj = new NhanVien();
+                    obj.MaNV = (string)dr["MaNV"];
+                    obj.TenNV = (string)dr["TenNV"];
+                    obj.NgaySinh = (DateTime)dr["NgaySinh"];
+                    obj.GioiTinh = (string)dr["GioiTinh"];
+                    obj.DiaChi = (string)dr["DiaChi"];
+                    obj.Sdt = (string)dr["Sdt"];
+                    obj.HeSoLuong = (double)dr["HeSoLuong"];
+                    obj.TaiKhoan = (string)dr["TaiKhoan"];
+                    data.Add(obj);
+                }
+                conn.Close();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi: " + ex.Message);
+            }
+            return null;
+        }
+
+        public List<TK> getDatacombo()
+        {
+            try
+            {
+                List<TK> data = new List<TK>();
+
+                SqlConnection conn = new SqlConnection(connect);
+                conn.Open();
+                string Query = "SELECT TaiKhoan FROM TaiKhoan";
+                SqlCommand cmd = new SqlCommand(Query, conn);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    TK obj = new TK();
+                    obj.TaiKhoan = (string)dr["TaiKhoan"];
+                    data.Add(obj);
+                }
+                conn.Close();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi: " + ex.Message);
+            }
+            return null;
+        }
+
+        public int ThemSuaXoaNV(string Query)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(connect);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(Query, conn);
+                int sl = cmd.ExecuteNonQuery();
+                conn.Close();
+                return sl;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi: " + ex.Message);
+            }
+            return 0;
+        }
+
+        public List<NhanVien> TimNV(string Query)
+        {
+            try
+            {
+                List<NhanVien> data = new List<NhanVien>();
+
+                SqlConnection conn = new SqlConnection(connect);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(Query, conn);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    NhanVien obj = new NhanVien();
+                    obj.MaNV = (string)dr["MaNV"];
+                    obj.TenNV = (string)dr["TenNV"];
+                    obj.NgaySinh = (DateTime)dr["NgaySinh"];
+                    obj.GioiTinh = (string)dr["GioiTinh"];
+                    obj.DiaChi = (string)dr["DiaChi"];
+                    obj.Sdt = (string)dr["Sdt"];
+                    obj.HeSoLuong = (double)dr["HeSoLuong"];
+                    obj.TaiKhoan = (string)dr["TaiKhoan"];
+                    data.Add(obj);
+                }
+                conn.Close();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi: " + ex.Message);
+            }
+            return null;
+        }
+
+        public List<NhanVien> SapXepNV(string sapxep)
+        {
+            try
+            {
+                List<NhanVien> data = new List<NhanVien>();
+
+                SqlConnection conn = new SqlConnection(connect);
+                conn.Open();
+                string Query = $"SELECT * FROM NhanVien ORDER BY {sapxep}";
                 SqlCommand cmd = new SqlCommand(Query, conn);
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
@@ -44,41 +158,53 @@ namespace QuanLyCuaHangGiaDung.Controller
             return null;
         }
 
-        public List<Model.TK> getDatacombo()
+        public void ToExcel(DataGridView dataGridView1, string fileName)
         {
+            //khai báo thư viện hỗ trợ Microsoft.Office.Interop.Excel
+            Microsoft.Office.Interop.Excel.Application excel;
+            Microsoft.Office.Interop.Excel.Workbook workbook;
+            Microsoft.Office.Interop.Excel.Worksheet worksheet;
             try
             {
-                List<Model.TK> data = new List<Model.TK>();
+                //Tạo đối tượng COM.
+                excel = new Microsoft.Office.Interop.Excel.Application();
+                excel.Visible = false;
+                excel.DisplayAlerts = false;
+                //tạo mới một Workbooks bằng phương thức add()
+                workbook = excel.Workbooks.Add(Type.Missing);
+                worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets["Sheet1"];
+                //đặt tên cho sheet
+                worksheet.Name = "Quản lý học sinh";
 
-                SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
-                conn.Open();
-                string Query = "SELECT TaiKhoan FROM TaiKhoan";
-                SqlCommand cmd = new SqlCommand(Query, conn);
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
+                // export header trong DataGridView
+                for (int i = 0; i < dataGridView1.ColumnCount; i++)
                 {
-                    Model.TK obj = new Model.TK();
-                    obj.TaiKhoan = (string)dr["TaiKhoan"];
-                    data.Add(obj);
+                    worksheet.Cells[1, i + 1] = dataGridView1.Columns[i].HeaderText;
                 }
-                conn.Close();
-                return data;
+                // export nội dung trong DataGridView
+                for (int i = 0; i < dataGridView1.RowCount; i++)
+                {
+                    for (int j = 0; j < dataGridView1.ColumnCount; j++)
+                    {
+                        worksheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                    }
+                }
+                // sử dụng phương thức SaveAs() để lưu workbook với filename
+                workbook.SaveAs(fileName);
+                //đóng workbook
+                workbook.Close();
+                excel.Quit();
+                MessageBox.Show("Xuất dữ liệu ra Excel thành công!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Loi: " + ex.Message);
+                MessageBox.Show(ex.Message);
             }
-            return null;
-        }
-
-        public int ThemmoiNV(string Query)
-        {
-            SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
-            conn.Open();
-            SqlCommand cmd = new SqlCommand(Query, conn);
-            int sl = cmd.ExecuteNonQuery();
-            conn.Close();
-            return sl;
+            finally
+            {
+                workbook = null;
+                worksheet = null;
+            }
         }
     }
 }

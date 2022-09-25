@@ -197,6 +197,7 @@
             this.dgvNhanvien.ReadOnly = true;
             this.dgvNhanvien.RowHeadersWidth = 51;
             this.dgvNhanvien.RowTemplate.Height = 24;
+            this.dgvNhanvien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNhanvien.Size = new System.Drawing.Size(1000, 466);
             this.dgvNhanvien.TabIndex = 0;
             this.dgvNhanvien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhanvien_CellClick);
