@@ -21,6 +21,7 @@ namespace QuanLyCuaHangGiaDung.View
         private void QuanLyNhanVien_Load(object sender, EventArgs e)
         {
             getData();
+            getDatacombo();
         }
 
         public void getData()
@@ -29,7 +30,7 @@ namespace QuanLyCuaHangGiaDung.View
             {
                 List<Model.NhanVien> data = new List<Model.NhanVien>();
 
-                SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-08FCIFR\SQLEXPRESS;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
+                SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
                 conn.Open();
                 string Query = "SELECT * FROM NhanVien";
                 SqlCommand cmd = new SqlCommand(Query, conn);
@@ -86,10 +87,10 @@ namespace QuanLyCuaHangGiaDung.View
                 }
                 else
                 {
-                    SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-08FCIFR\SQLEXPRESS;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
+                    SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
                     conn.Open();
                     string Query = $"INSERT INTO NhanVien(MaNV, TenNV, NgaySinh, GioiTinh, DiaChi, Sdt, HeSoLuong, TaiKhoan)" +
-                        $" Values('{txtManv.Text}', '{txtTennv.Text}', '{dateNgaysinh.Text}', '{cbGioitinh.Text}', '{txtDiachi.Text}', '{txtSdt.Text}', '{txtHesoluong.Text}', '{cbTaikhoan.Text}')";
+                        $" Values(N'{txtManv.Text}', N'{txtTennv.Text}', '{dateNgaysinh.Text}', N'{cbGioitinh.Text}', N'{txtDiachi.Text}', N'{txtSdt.Text}', '{txtHesoluong.Text}', N'{cbTaikhoan.Text}')";
                     SqlCommand cmd = new SqlCommand(Query, conn);
                     int sl = cmd.ExecuteNonQuery();
                     conn.Close();
@@ -117,11 +118,11 @@ namespace QuanLyCuaHangGiaDung.View
             {
                 List<Model.NhanVien> data = new List<Model.NhanVien>();
 
-                SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-08FCIFR\SQLEXPRESS;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
+                SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
                 conn.Open();
-                string Query = $"SELECT * FROM NhanVien WHERE MaNV LIKE '%{txtTimkiem.Text}%' OR TenNV LIKE '%{txtTimkiem.Text}%' " +
-                    $"OR NgaySinh LIKE '%{txtTimkiem.Text}%' OR GioiTinh LIKE '%{txtTimkiem.Text}%' OR DiaChi LIKE '%{txtTimkiem.Text}%' " +
-                    $"OR Sdt LIKE '%{txtTimkiem.Text}%' OR HeSoLuong LIKE '%{txtTimkiem.Text}%' OR TaiKhoan LIKE '%{txtTimkiem.Text}%'";
+                string Query = $"SELECT * FROM NhanVien WHERE MaNV LIKE N'%{txtTimkiem.Text}%' OR TenNV LIKE N'%{txtTimkiem.Text}%' " +
+                    $"OR NgaySinh LIKE '%{txtTimkiem.Text}%' OR GioiTinh LIKE N'%{txtTimkiem.Text}%' OR DiaChi LIKE N'%{txtTimkiem.Text}%' " +
+                    $"OR Sdt LIKE N'%{txtTimkiem.Text}%' OR HeSoLuong LIKE '%{txtTimkiem.Text}%' OR TaiKhoan LIKE N'%{txtTimkiem.Text}%'";
                 SqlCommand cmd = new SqlCommand(Query, conn);
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
@@ -164,7 +165,7 @@ namespace QuanLyCuaHangGiaDung.View
 
                 List<Model.NhanVien> data = new List<Model.NhanVien>();
 
-                SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-08FCIFR\SQLEXPRESS;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
+                SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
                 conn.Open();
                 string Query = $"SELECT * FROM NhanVien ORDER BY {sapxep}";
                 SqlCommand cmd = new SqlCommand(Query, conn);
@@ -195,11 +196,11 @@ namespace QuanLyCuaHangGiaDung.View
         {
             try
             {
-                SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-08FCIFR\SQLEXPRESS;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
+                SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
                 conn.Open();
-                string Query = $"UPDATE NhanVien SET TenNV='{txtTennv.Text}', NgaySinh='{dateNgaysinh.Text}'," +
-                    $" GioiTinh='{cbGioitinh.Text}', DiaChi='{txtDiachi.Text}', Sdt='{txtSdt.Text}', HeSoLuong='{txtHesoluong.Text}'," +
-                    $" TaiKhoan='{cbTaikhoan.Text}' WHERE MaNV='{txtManv.Text}'";
+                string Query = $"UPDATE NhanVien SET TenNV=N'{txtTennv.Text}', NgaySinh='{dateNgaysinh.Text}'," +
+                    $" GioiTinh=N'{cbGioitinh.Text}', DiaChi=N'{txtDiachi.Text}', Sdt=N'{txtSdt.Text}', HeSoLuong='{txtHesoluong.Text}'," +
+                    $" TaiKhoan=N'{cbTaikhoan.Text}' WHERE MaNV=N'{txtManv.Text}'";
                 SqlCommand cmd = new SqlCommand(Query, conn);
                 int sl = cmd.ExecuteNonQuery();
                 conn.Close();
@@ -246,9 +247,9 @@ namespace QuanLyCuaHangGiaDung.View
         {
             try
             {
-                SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-08FCIFR\SQLEXPRESS;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
+                SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
                 conn.Open();
-                string Query = $"DELETE FROM NhanVien WHERE MaNV='{txtManv.Text}'";
+                string Query = $"DELETE FROM NhanVien WHERE MaNV=N'{txtManv.Text}'";
                 SqlCommand cmd = new SqlCommand(Query, conn);
                 int sl = cmd.ExecuteNonQuery();
                 conn.Close();
@@ -324,6 +325,47 @@ namespace QuanLyCuaHangGiaDung.View
             {
                 //gọi hàm ToExcel() với tham số là dtgDSHS và filename từ SaveFileDialog
                 ToExcel(dgvNhanvien, saveFileDialog1.FileName);
+            }
+        }
+
+        private void cbTaikhoan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        public void getDatacombo()
+        {
+            try
+            {
+                List<Model.TK> data = new List<Model.TK>();
+
+                SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
+                conn.Open();
+                string Query = "SELECT TaiKhoan FROM TaiKhoan";
+                SqlCommand cmd = new SqlCommand(Query, conn);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Model.TK obj = new Model.TK();
+                    //obj.MaNV = (string)dr["MaNV"];
+                    //obj.TenNV = (string)dr["TenNV"];
+                    //obj.NgaySinh = (DateTime)dr["NgaySinh"];
+                    //obj.GioiTinh = (string)dr["GioiTinh"];
+                    //obj.DiaChi = (string)dr["DiaChi"];
+                    //obj.Sdt = (string)dr["Sdt"];
+                    //obj.HeSoLuong = (double)dr["HeSoLuong"];
+                    obj.TaiKhoan = (string)dr["TaiKhoan"];
+                    data.Add(obj);
+                }
+                conn.Close();
+                cbTaikhoan.DisplayMember = "TaiKhoan";
+                cbTaikhoan.DataSource = data;
+                
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi: " + ex.Message);
             }
         }
     }

@@ -205,13 +205,11 @@
             // 
             this.cbTaikhoan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTaikhoan.FormattingEnabled = true;
-            this.cbTaikhoan.Items.AddRange(new object[] {
-            "admin",
-            "Nhân viên"});
             this.cbTaikhoan.Location = new System.Drawing.Point(124, 362);
             this.cbTaikhoan.Name = "cbTaikhoan";
             this.cbTaikhoan.Size = new System.Drawing.Size(98, 24);
             this.cbTaikhoan.TabIndex = 18;
+            this.cbTaikhoan.SelectedIndexChanged += new System.EventHandler(this.cbTaikhoan_SelectedIndexChanged);
             // 
             // txtDiachi
             // 
