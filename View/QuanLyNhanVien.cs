@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyCuaHangGiaDung.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,7 @@ namespace QuanLyCuaHangGiaDung.View
 {
     public partial class QuanLyNhanVien : Form
     {
+        NhanVienController lnv = new NhanVienController();
         public QuanLyNhanVien()
         {
             InitializeComponent();
@@ -20,40 +22,9 @@ namespace QuanLyCuaHangGiaDung.View
 
         private void QuanLyNhanVien_Load(object sender, EventArgs e)
         {
-            getData();
-            getDatacombo();
-        }
-
-        public void getData()
-        {
-            try
-            {
-                List<Model.NhanVien> data = new List<Model.NhanVien>();
-
-                SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
-                conn.Open();
-                string Query = "SELECT * FROM NhanVien";
-                SqlCommand cmd = new SqlCommand(Query, conn);
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    Model.NhanVien obj = new Model.NhanVien();
-                    obj.MaNV = (string)dr["MaNV"];
-                    obj.TenNV = (string)dr["TenNV"];
-                    obj.NgaySinh = (DateTime)dr["NgaySinh"];
-                    obj.GioiTinh = (string)dr["GioiTinh"];
-                    obj.DiaChi = (string)dr["DiaChi"];
-                    obj.Sdt = (string)dr["Sdt"];
-                    obj.HeSoLuong = (double)dr["HeSoLuong"];
-                    obj.TaiKhoan = (string)dr["TaiKhoan"];
-                    data.Add(obj);
-                }
-                conn.Close();
-                dgvNhanvien.DataSource = data;
-            }catch (Exception ex)
-            {
-                MessageBox.Show("Loi: "+ex.Message);
-            }
+            dgvNhanvien.DataSource = lnv.getData();
+            cbTaikhoan.DisplayMember = "TaiKhoan";
+            cbTaikhoan.DataSource = lnv.getDatacombo();
         }
 
         public void setNull()
@@ -68,7 +39,7 @@ namespace QuanLyCuaHangGiaDung.View
             txtHesoluong.Text = null;
             cbTaikhoan.Text = null;
             cbSapxep.Text = null;
-            getData();
+            dgvNhanvien.DataSource = lnv.getData();
         }
 
         private void btnLammoi_Click(object sender, EventArgs e)
@@ -87,13 +58,9 @@ namespace QuanLyCuaHangGiaDung.View
                 }
                 else
                 {
-                    SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
-                    conn.Open();
                     string Query = $"INSERT INTO NhanVien(MaNV, TenNV, NgaySinh, GioiTinh, DiaChi, Sdt, HeSoLuong, TaiKhoan)" +
-                        $" Values(N'{txtManv.Text}', N'{txtTennv.Text}', '{dateNgaysinh.Text}', N'{cbGioitinh.Text}', N'{txtDiachi.Text}', N'{txtSdt.Text}', '{txtHesoluong.Text}', N'{cbTaikhoan.Text}')";
-                    SqlCommand cmd = new SqlCommand(Query, conn);
-                    int sl = cmd.ExecuteNonQuery();
-                    conn.Close();
+                $" Values(N'{txtManv.Text}', N'{txtTennv.Text}', '{dateNgaysinh.Text}', N'{cbGioitinh.Text}', N'{txtDiachi.Text}', N'{txtSdt.Text}', '{txtHesoluong.Text}', N'{cbTaikhoan.Text}')";
+                    int sl = lnv.ThemmoiNV(Query);
                     if (sl > 0)
                     {
                         MessageBox.Show("Thêm mới thành công!");
@@ -103,6 +70,22 @@ namespace QuanLyCuaHangGiaDung.View
                     {
                         MessageBox.Show("Thêm mới thất bại!");
                     }
+                    //SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
+                    //conn.Open();
+                    //string Query = $"INSERT INTO NhanVien(MaNV, TenNV, NgaySinh, GioiTinh, DiaChi, Sdt, HeSoLuong, TaiKhoan)" +
+                    //    $" Values(N'{txtManv.Text}', N'{txtTennv.Text}', '{dateNgaysinh.Text}', N'{cbGioitinh.Text}', N'{txtDiachi.Text}', N'{txtSdt.Text}', '{txtHesoluong.Text}', N'{cbTaikhoan.Text}')";
+                    //SqlCommand cmd = new SqlCommand(Query, conn);
+                    //int sl = cmd.ExecuteNonQuery();
+                    //conn.Close();
+                    //if (sl > 0)
+                    //{
+                    //    MessageBox.Show("Thêm mới thành công!");
+                    //    setNull();
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("Thêm mới thất bại!");
+                    //}
                 }
 
             }
@@ -325,47 +308,6 @@ namespace QuanLyCuaHangGiaDung.View
             {
                 //gọi hàm ToExcel() với tham số là dtgDSHS và filename từ SaveFileDialog
                 ToExcel(dgvNhanvien, saveFileDialog1.FileName);
-            }
-        }
-
-        private void cbTaikhoan_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        public void getDatacombo()
-        {
-            try
-            {
-                List<Model.TK> data = new List<Model.TK>();
-
-                SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
-                conn.Open();
-                string Query = "SELECT TaiKhoan FROM TaiKhoan";
-                SqlCommand cmd = new SqlCommand(Query, conn);
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    Model.TK obj = new Model.TK();
-                    //obj.MaNV = (string)dr["MaNV"];
-                    //obj.TenNV = (string)dr["TenNV"];
-                    //obj.NgaySinh = (DateTime)dr["NgaySinh"];
-                    //obj.GioiTinh = (string)dr["GioiTinh"];
-                    //obj.DiaChi = (string)dr["DiaChi"];
-                    //obj.Sdt = (string)dr["Sdt"];
-                    //obj.HeSoLuong = (double)dr["HeSoLuong"];
-                    obj.TaiKhoan = (string)dr["TaiKhoan"];
-                    data.Add(obj);
-                }
-                conn.Close();
-                cbTaikhoan.DisplayMember = "TaiKhoan";
-                cbTaikhoan.DataSource = data;
-                
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Loi: " + ex.Message);
             }
         }
     }
