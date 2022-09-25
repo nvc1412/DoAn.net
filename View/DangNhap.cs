@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 using System.Data.SqlClient;
+using QuanLyCuaHangGiaDung.Controller;
 
 namespace QuanLyCuaHangGiaDung
 {
     public partial class DangNhap : Form
     {
+        DangNhapController  dn = new DangNhapController();
         public DangNhap()
         {
             InitializeComponent();
@@ -43,42 +45,19 @@ namespace QuanLyCuaHangGiaDung
 
         private void btnDangnhap_Click(object sender, EventArgs e)
         {
-            try
+            string Query = $"SELECT COUNT(*) FROM TaiKhoan WHERE TaiKhoan = '{txtTaikhoan.Text}' and MatKhau = '{dn.ToMD5(txtMatkhau.Text)}'";
+            int sl = dn.DangNhap(Query);
+            if (sl == 1)
             {
-                SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-08FCIFR\SQLEXPRESS;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
-                conn.Open();
-                string Query = $"SELECT COUNT(*) FROM TaiKhoan WHERE TaiKhoan = '{txtTaikhoan.Text}' and MatKhau = '{ToMD5(txtMatkhau.Text)}'";
-                SqlCommand cmd = new SqlCommand(Query, conn);
-                int sl = (int)cmd.ExecuteScalar();
-                conn.Close();
-                if (sl == 1)
-                {
-                    View.HeThong frm = new View.HeThong(txtTaikhoan.Text);
-                    this.Hide();
-                    frm.ShowDialog();
-                    this.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác !");
-                }
-            }catch (Exception ex)
-            {
-                MessageBox.Show("Loi: "+ex.Message);
+                View.HeThong frm = new View.HeThong(txtTaikhoan.Text);
+                this.Hide();
+                frm.ShowDialog();
+                this.Show();
             }
-        }
-
-        public string ToMD5(string str)
-        {
-            string result = "";
-            byte[] buffer = Encoding.UTF8.GetBytes(str);
-            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-            buffer = md5.ComputeHash(buffer);
-            for(int i=0; i< buffer.Length; i++)
+            else
             {
-                result += buffer[i].ToString("x2");
+                MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác !");
             }
-            return result;
         }
     }
 }

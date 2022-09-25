@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\DangNhapController.cs" />
     <Compile Include="Controller\NhanVienController.cs" />
     <Compile Include="Model\HoaDon.cs" />
     <Compile Include="Model\LoaiSP.cs" />

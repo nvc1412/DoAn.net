@@ -158,6 +158,25 @@ namespace QuanLyCuaHangGiaDung.Controller
             return null;
         }
 
+        public int getMaNV(string manv)
+        {
+            try
+            {
+                string Query = $"SELECT COUNT(*) FROM NhanVien WHERE MaNV = '{manv}'";
+                SqlConnection conn = new SqlConnection(connect);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(Query, conn);
+                int sl = (int)cmd.ExecuteScalar();
+                conn.Close();
+                return sl;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi: " + ex.Message);
+            }
+            return 0;
+        }
+
         public void ToExcel(DataGridView dataGridView1, string fileName)
         {
             //khai báo thư viện hỗ trợ Microsoft.Office.Interop.Excel

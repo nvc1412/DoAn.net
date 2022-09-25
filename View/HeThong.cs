@@ -133,7 +133,7 @@ namespace QuanLyCuaHangGiaDung.View
         {
             try
             {
-                SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-08FCIFR\SQLEXPRESS;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
+                SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
                 conn.Open();
                 string Query = $"SELECT COUNT(*) FROM TaiKhoan WHERE TaiKhoan = '{tk}' AND Quyen = 'admin'";
                 SqlCommand cmd = new SqlCommand(Query, conn);
