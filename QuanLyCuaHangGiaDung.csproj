@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Controller\DangNhapController.cs" />
     <Compile Include="Controller\NhanVienController.cs" />
+    <Compile Include="Controller\SanPhamController.cs" />
     <Compile Include="Model\HoaDon.cs" />
     <Compile Include="Model\LoaiSP.cs" />
     <Compile Include="Model\NhanVien.cs" />

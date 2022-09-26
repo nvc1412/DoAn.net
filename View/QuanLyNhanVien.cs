@@ -26,6 +26,7 @@ namespace QuanLyCuaHangGiaDung.View
 
         private void QuanLyNhanVien_Load(object sender, EventArgs e)
         {
+            txtManv.Focus();
             dgvNhanvien.DataSource = nv.getData();
             cbTaikhoan.DisplayMember = "TaiKhoan";
             cbTaikhoan.DataSource = nv.getDatacombo();
@@ -56,6 +57,7 @@ namespace QuanLyCuaHangGiaDung.View
         private void btnLammoi_Click(object sender, EventArgs e)
         {
             setNull();
+            txtManv.Focus();
         }
 
         private void btnThem_Click(object sender, EventArgs e)

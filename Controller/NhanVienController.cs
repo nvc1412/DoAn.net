@@ -162,7 +162,7 @@ namespace QuanLyCuaHangGiaDung.Controller
         {
             try
             {
-                string Query = $"SELECT COUNT(*) FROM NhanVien WHERE MaNV = '{manv}'";
+                string Query = $"SELECT COUNT(*) FROM NhanVien WHERE MaNV = N'{manv}'";
                 SqlConnection conn = new SqlConnection(connect);
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(Query, conn);

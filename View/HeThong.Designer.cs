@@ -62,7 +62,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1782, 56);
+            this.panel1.Size = new System.Drawing.Size(1924, 56);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -71,7 +71,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label1.Location = new System.Drawing.Point(674, 9);
+            this.label1.Location = new System.Drawing.Point(745, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(439, 42);
             this.label1.TabIndex = 0;
@@ -289,7 +289,7 @@
             this.panel_hienthi.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel_hienthi.Location = new System.Drawing.Point(343, 56);
             this.panel_hienthi.Name = "panel_hienthi";
-            this.panel_hienthi.Size = new System.Drawing.Size(1439, 597);
+            this.panel_hienthi.Size = new System.Drawing.Size(1581, 597);
             this.panel_hienthi.TabIndex = 2;
             // 
             // pictureBox2
@@ -299,7 +299,7 @@
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1439, 597);
+            this.pictureBox2.Size = new System.Drawing.Size(1581, 597);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
@@ -307,7 +307,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1782, 653);
+            this.ClientSize = new System.Drawing.Size(1924, 653);
             this.Controls.Add(this.panel_hienthi);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

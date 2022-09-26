@@ -78,7 +78,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1302, 69);
+            this.groupBox2.Size = new System.Drawing.Size(1287, 69);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             // 
@@ -87,7 +87,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label1.Location = new System.Drawing.Point(733, 25);
+            this.label1.Location = new System.Drawing.Point(696, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 20);
             this.label1.TabIndex = 5;
@@ -104,7 +104,7 @@
             "Theo mã giảm dần",
             "Theo tên giảm dần",
             "Theo hệ số lương giảm dần"});
-            this.cbSapxep.Location = new System.Drawing.Point(821, 25);
+            this.cbSapxep.Location = new System.Drawing.Point(784, 25);
             this.cbSapxep.Name = "cbSapxep";
             this.cbSapxep.Size = new System.Drawing.Size(205, 24);
             this.cbSapxep.TabIndex = 4;
@@ -116,7 +116,7 @@
             this.btnTimkiem.ForeColor = System.Drawing.SystemColors.Desktop;
             this.btnTimkiem.Image = ((System.Drawing.Image)(resources.GetObject("btnTimkiem.Image")));
             this.btnTimkiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTimkiem.Location = new System.Drawing.Point(567, 12);
+            this.btnTimkiem.Location = new System.Drawing.Point(533, 12);
             this.btnTimkiem.Name = "btnTimkiem";
             this.btnTimkiem.Size = new System.Drawing.Size(120, 46);
             this.btnTimkiem.TabIndex = 3;
@@ -129,7 +129,7 @@
             // 
             this.txtTimkiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTimkiem.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtTimkiem.Location = new System.Drawing.Point(176, 22);
+            this.txtTimkiem.Location = new System.Drawing.Point(142, 22);
             this.txtTimkiem.Name = "txtTimkiem";
             this.txtTimkiem.Size = new System.Drawing.Size(351, 27);
             this.txtTimkiem.TabIndex = 2;
@@ -140,10 +140,10 @@
             this.btnLammoi.ForeColor = System.Drawing.SystemColors.Desktop;
             this.btnLammoi.Image = ((System.Drawing.Image)(resources.GetObject("btnLammoi.Image")));
             this.btnLammoi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLammoi.Location = new System.Drawing.Point(1076, 12);
+            this.btnLammoi.Location = new System.Drawing.Point(1036, 12);
             this.btnLammoi.Name = "btnLammoi";
             this.btnLammoi.Size = new System.Drawing.Size(131, 46);
-            this.btnLammoi.TabIndex = 7;
+            this.btnLammoi.TabIndex = 13;
             this.btnLammoi.Text = "Làm mới";
             this.btnLammoi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLammoi.UseVisualStyleBackColor = true;
@@ -154,7 +154,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label2.Location = new System.Drawing.Point(84, 25);
+            this.label2.Location = new System.Drawing.Point(50, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 20);
             this.label2.TabIndex = 1;
@@ -169,7 +169,7 @@
             this.btnXoa.Location = new System.Drawing.Point(428, 37);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(131, 46);
-            this.btnXoa.TabIndex = 6;
+            this.btnXoa.TabIndex = 11;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
@@ -181,7 +181,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(296, 69);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1006, 487);
+            this.groupBox1.Size = new System.Drawing.Size(991, 487);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách nhân viên";
@@ -197,8 +197,7 @@
             this.dgvNhanvien.ReadOnly = true;
             this.dgvNhanvien.RowHeadersWidth = 51;
             this.dgvNhanvien.RowTemplate.Height = 24;
-            this.dgvNhanvien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNhanvien.Size = new System.Drawing.Size(1000, 466);
+            this.dgvNhanvien.Size = new System.Drawing.Size(985, 466);
             this.dgvNhanvien.TabIndex = 0;
             this.dgvNhanvien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhanvien_CellClick);
             // 
@@ -209,14 +208,14 @@
             this.cbTaikhoan.Location = new System.Drawing.Point(124, 362);
             this.cbTaikhoan.Name = "cbTaikhoan";
             this.cbTaikhoan.Size = new System.Drawing.Size(98, 24);
-            this.cbTaikhoan.TabIndex = 18;
+            this.cbTaikhoan.TabIndex = 8;
             // 
             // txtDiachi
             // 
             this.txtDiachi.Location = new System.Drawing.Point(128, 230);
             this.txtDiachi.Name = "txtDiachi";
             this.txtDiachi.Size = new System.Drawing.Size(142, 22);
-            this.txtDiachi.TabIndex = 17;
+            this.txtDiachi.TabIndex = 5;
             // 
             // cbGioitinh
             // 
@@ -229,7 +228,7 @@
             this.cbGioitinh.Location = new System.Drawing.Point(128, 181);
             this.cbGioitinh.Name = "cbGioitinh";
             this.cbGioitinh.Size = new System.Drawing.Size(94, 24);
-            this.cbGioitinh.TabIndex = 6;
+            this.cbGioitinh.TabIndex = 4;
             // 
             // dateNgaysinh
             // 
@@ -238,7 +237,7 @@
             this.dateNgaysinh.Location = new System.Drawing.Point(128, 135);
             this.dateNgaysinh.Name = "dateNgaysinh";
             this.dateNgaysinh.Size = new System.Drawing.Size(142, 22);
-            this.dateNgaysinh.TabIndex = 16;
+            this.dateNgaysinh.TabIndex = 3;
             this.dateNgaysinh.Value = new System.DateTime(2022, 9, 14, 16, 6, 51, 0);
             // 
             // txtTaikhoan
@@ -256,7 +255,7 @@
             this.txtHesoluong.Location = new System.Drawing.Point(124, 313);
             this.txtHesoluong.Name = "txtHesoluong";
             this.txtHesoluong.Size = new System.Drawing.Size(98, 22);
-            this.txtHesoluong.TabIndex = 13;
+            this.txtHesoluong.TabIndex = 7;
             // 
             // label9
             // 
@@ -273,7 +272,7 @@
             this.txtSdt.Location = new System.Drawing.Point(128, 275);
             this.txtSdt.Name = "txtSdt";
             this.txtSdt.Size = new System.Drawing.Size(142, 22);
-            this.txtSdt.TabIndex = 11;
+            this.txtSdt.TabIndex = 6;
             // 
             // label8
             // 
@@ -320,7 +319,7 @@
             this.txtTennv.Location = new System.Drawing.Point(128, 89);
             this.txtTennv.Name = "txtTennv";
             this.txtTennv.Size = new System.Drawing.Size(142, 22);
-            this.txtTennv.TabIndex = 3;
+            this.txtTennv.TabIndex = 2;
             // 
             // label4
             // 
@@ -355,10 +354,10 @@
             this.btnXuatexcel.ForeColor = System.Drawing.SystemColors.Desktop;
             this.btnXuatexcel.Image = ((System.Drawing.Image)(resources.GetObject("btnXuatexcel.Image")));
             this.btnXuatexcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXuatexcel.Location = new System.Drawing.Point(666, 37);
+            this.btnXuatexcel.Location = new System.Drawing.Point(656, 37);
             this.btnXuatexcel.Name = "btnXuatexcel";
             this.btnXuatexcel.Size = new System.Drawing.Size(156, 46);
-            this.btnXuatexcel.TabIndex = 10;
+            this.btnXuatexcel.TabIndex = 12;
             this.btnXuatexcel.Text = "Xuất Excel";
             this.btnXuatexcel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXuatexcel.UseVisualStyleBackColor = true;
@@ -373,7 +372,7 @@
             this.btnSua.Location = new System.Drawing.Point(247, 37);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(131, 46);
-            this.btnSua.TabIndex = 9;
+            this.btnSua.TabIndex = 10;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
@@ -387,7 +386,7 @@
             this.btnThem.Location = new System.Drawing.Point(71, 37);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(131, 46);
-            this.btnThem.TabIndex = 8;
+            this.btnThem.TabIndex = 9;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -427,7 +426,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox4.Location = new System.Drawing.Point(296, 556);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1006, 116);
+            this.groupBox4.Size = new System.Drawing.Size(991, 116);
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Chức năng";
@@ -437,7 +436,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(1302, 672);
+            this.ClientSize = new System.Drawing.Size(1287, 672);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
