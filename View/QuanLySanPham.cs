@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,6 +15,8 @@ namespace QuanLyCuaHangGiaDung.View
     public partial class QuanLySanPham : Form
     {
         SanPhamController sp = new SanPhamController();
+        Regex number = new Regex(@"^[-+]?[0-9]*.?[0-9]+$");
+
         public QuanLySanPham()
         {
             InitializeComponent();
@@ -25,6 +28,8 @@ namespace QuanLyCuaHangGiaDung.View
             dgvSanpham.DataSource = sp.getDataSP();
             btnSuaLoai.Enabled = false;
             btnXoaLoai.Enabled = false;
+            cbLsp.DisplayMember = "MaLoai";
+            cbLsp.DataSource = sp.getDatacombo();
         }
 
         private void tabSanpham_SelectedIndexChanged(object sender, EventArgs e)
@@ -172,6 +177,66 @@ namespace QuanLyCuaHangGiaDung.View
                 default: sapxep = "MaLoai"; break;
             }
             dgvLoaisanpham.DataSource = sp.SapXepLSP(sapxep);
+        }
+
+        // -------------------------Sản Phẩm---------------------------------------------------------------------------------
+
+        public void setNullSP()
+        {
+            txtMasp.Text = null;
+            txtTensp.Text = null;
+            txtGiaban.Text = null;
+            cbLsp.Text = null;
+            txtTenlsp.Text = null;
+            cbDvt.Text = null;
+            dgvSanpham.DataSource = sp.getDataSP();
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
+            btnThem.Enabled = true;
+            txtMasp.Enabled = true;
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            if (txtMasp.Text == "" || txtTensp.Text == "" || txtGiaban.Text == "" || cbLsp.Text == "" ||
+                txtTenlsp.Text == "" || cbDvt.Text == "" )
+            {
+                MessageBox.Show("Không được để trống!");
+            }
+            else if (sp.getMaSP(txtMasp.Text) > 0)
+            {
+                MessageBox.Show("Mã sản phẩm đã tồn tại!");
+            }
+            else if (!number.IsMatch(txtGiaban.Text))
+            {
+                MessageBox.Show("Giá bán phải là số!");
+            }
+            else
+            {
+                string Query = $"INSERT INTO SanPham(MaSP, TenSP, Loai, GiaBan, DVT) " +
+                    $"Values(N'{txtMasp.Text}', N'{txtTensp.Text}', N'{cbLsp.Text}', '{txtGiaban.Text}', N'{cbDvt.Text}')";
+                int sl = sp.ThemSuaXoaLSP(Query);
+                if (sl > 0)
+                {
+                    MessageBox.Show("Thêm mới thành công!");
+                    setNullSP();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm mới thất bại!");
+                }
+            }
+        }
+
+        private void btnLammoi_Click(object sender, EventArgs e)
+        {
+            setNullSP();
+            txtMasp.Focus();
+        }
+
+        private void cbLsp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtTenlsp.Text = sp.getTenLoai(cbLsp.Text);
         }
     }
 }

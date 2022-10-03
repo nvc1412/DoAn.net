@@ -213,5 +213,77 @@ namespace QuanLyCuaHangGiaDung.Controller
             }
             return null;
         }
+
+        public List<LoaiSP> getDatacombo()
+        {
+            try
+            {
+                List<LoaiSP> data = new List<LoaiSP>();
+
+                SqlConnection conn = new SqlConnection(connect);
+                conn.Open();
+                string Query = "SELECT MaLoai FROM LoaiSP";
+                SqlCommand cmd = new SqlCommand(Query, conn);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    LoaiSP obj = new LoaiSP();
+                    obj.MaLoai = (string)dr["MaLoai"];
+                    data.Add(obj);
+                }
+                conn.Close();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi: " + ex.Message);
+            }
+            return null;
+        }
+
+ //--------------Sản phẩm----------------------------------------------------------------------
+        
+        public int getMaSP(string masp)
+        {
+            try
+            {
+                string Query = $"SELECT COUNT(*) FROM SanPham WHERE Masp = N'{masp}'";
+                SqlConnection conn = new SqlConnection(connect);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(Query, conn);
+                int sl = (int)cmd.ExecuteScalar();
+                conn.Close();
+                return sl;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi: " + ex.Message);
+            }
+            return 0;
+        }
+
+        public string getTenLoai(string maloai)
+        {
+            string tenloai = "";
+            try
+            {
+                SqlConnection conn = new SqlConnection(connect);
+                conn.Open();
+                string Query = $"SELECT TenLoai FROM LoaiSP WHERE MaLoai = N'{maloai}'";
+                SqlCommand cmd = new SqlCommand(Query, conn);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    tenloai = (string)dr["TenLoai"];
+                }
+                conn.Close();
+                return tenloai;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi: " + ex.Message);
+            }
+            return tenloai;
+        }
     }
 }

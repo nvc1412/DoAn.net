@@ -185,6 +185,7 @@
             this.btnThem.TabIndex = 7;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnSua
             // 
@@ -265,6 +266,7 @@
             // 
             // txtTenlsp
             // 
+            this.txtTenlsp.Enabled = false;
             this.txtTenlsp.Location = new System.Drawing.Point(145, 279);
             this.txtTenlsp.Name = "txtTenlsp";
             this.txtTenlsp.Size = new System.Drawing.Size(118, 22);
@@ -285,6 +287,7 @@
             this.cbLsp.Name = "cbLsp";
             this.cbLsp.Size = new System.Drawing.Size(118, 24);
             this.cbLsp.TabIndex = 4;
+            this.cbLsp.SelectedIndexChanged += new System.EventHandler(this.cbLsp_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -418,6 +421,7 @@
             this.btnLammoi.Text = "Làm mới";
             this.btnLammoi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLammoi.UseVisualStyleBackColor = true;
+            this.btnLammoi.Click += new System.EventHandler(this.btnLammoi_Click);
             // 
             // label2
             // 
