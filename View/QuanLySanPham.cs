@@ -23,6 +23,8 @@ namespace QuanLyCuaHangGiaDung.View
         {
             txtMasp.Focus();
             dgvSanpham.DataSource = sp.getDataSP();
+            btnSuaLoai.Enabled = false;
+            btnXoaLoai.Enabled = false;
         }
 
         private void tabSanpham_SelectedIndexChanged(object sender, EventArgs e)
@@ -45,6 +47,10 @@ namespace QuanLyCuaHangGiaDung.View
             txtTenloai.Text = null;
             txtTimkiemLoai.Text = null;
             dgvLoaisanpham.DataSource = sp.getDataLSP();
+            btnSuaLoai.Enabled = false;
+            btnXoaLoai.Enabled = false;
+            btnThemLoai.Enabled = true;
+            txtMaloai.Enabled = true;
         }
 
         private void btnThemLoai_Click(object sender, EventArgs e)
@@ -87,6 +93,10 @@ namespace QuanLyCuaHangGiaDung.View
 
         private void dgvLoaisanpham_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            btnSuaLoai.Enabled = true;
+            btnXoaLoai.Enabled = true;
+            btnThemLoai.Enabled = false;
+            txtMaloai.Enabled = false;
             try
             {
                 int row = e.RowIndex;
@@ -101,6 +111,67 @@ namespace QuanLyCuaHangGiaDung.View
             {
                 MessageBox.Show("Loi: " + ex.Message);
             }
+        }
+
+        private void btnSuaLoai_Click(object sender, EventArgs e)
+        {
+            if (txtMaloai.Text == "" || txtTenloai.Text == "")
+            {
+                MessageBox.Show("Không được để trống!");
+            }
+            else
+            {
+                string Query = $"UPDATE LoaiSP SET TenLoai='{txtTenloai.Text}' WHERE MaLoai=N'{txtMaloai.Text}'";
+                int sl = sp.ThemSuaXoaLSP(Query);
+                if (sl > 0)
+                {
+                    MessageBox.Show("Sửa thành công!");
+                    setNull();
+                }
+                else
+                {
+                    MessageBox.Show("Sửa thất bại!");
+                }
+            }
+        }
+
+        private void btnXoaLoai_Click(object sender, EventArgs e)
+        {
+            string Query = $"DELETE FROM LoaiSP WHERE MaLoai=N'{txtMaloai.Text}'";
+            int sl = sp.ThemSuaXoaLSP(Query);
+            if (sl > 0)
+            {
+                MessageBox.Show("Xóa thành công!");
+                setNull();
+            }
+            else
+            {
+                MessageBox.Show("Xóa thất bại!");
+            }
+        }
+
+        private void btnXuatexcelLoai_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                //gọi hàm ToExcel() với tham số là dgvNhanvien và filename từ SaveFileDialog
+                sp.ToExcel(dgvLoaisanpham, saveFileDialog1.FileName);
+            }
+        }
+
+        private void cbSapxepLoai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sapxep = "MaLoai";
+            switch (cbSapxepLoai.SelectedIndex)
+            {
+                case 0: sapxep = "MaLoai"; break;
+                case 1: sapxep = "TenLoai"; break;
+                case 2: sapxep = "MaLoai DESC"; break;
+                case 3: sapxep = "TenLoai DESC"; break;
+                default: sapxep = "MaLoai"; break;
+            }
+            dgvLoaisanpham.DataSource = sp.SapXepLSP(sapxep);
         }
     }
 }

@@ -471,6 +471,7 @@
             this.btnXoaLoai.TabIndex = 5;
             this.btnXoaLoai.Text = "Xóa";
             this.btnXoaLoai.UseVisualStyleBackColor = true;
+            this.btnXoaLoai.Click += new System.EventHandler(this.btnXoaLoai_Click);
             // 
             // btnXuatexcelLoai
             // 
@@ -485,6 +486,7 @@
             this.btnXuatexcelLoai.Text = "Xuất Excel";
             this.btnXuatexcelLoai.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXuatexcelLoai.UseVisualStyleBackColor = true;
+            this.btnXuatexcelLoai.Click += new System.EventHandler(this.btnXuatexcelLoai_Click);
             // 
             // btnSuaLoai
             // 
@@ -498,6 +500,7 @@
             this.btnSuaLoai.TabIndex = 4;
             this.btnSuaLoai.Text = "Sửa";
             this.btnSuaLoai.UseVisualStyleBackColor = true;
+            this.btnSuaLoai.Click += new System.EventHandler(this.btnSuaLoai_Click);
             // 
             // btnThemLoai
             // 
@@ -619,13 +622,15 @@
             this.cbSapxepLoai.FormattingEnabled = true;
             this.cbSapxepLoai.ItemHeight = 16;
             this.cbSapxepLoai.Items.AddRange(new object[] {
-            "Theo mã",
-            "Theo tên",
-            "Theo hệ số lương"});
+            "Mã loại tăng dần",
+            "Tên loại tăng dần",
+            "Mã loại giảm dần",
+            "Tên loại giảm dần"});
             this.cbSapxepLoai.Location = new System.Drawing.Point(821, 25);
             this.cbSapxepLoai.Name = "cbSapxepLoai";
             this.cbSapxepLoai.Size = new System.Drawing.Size(135, 24);
             this.cbSapxepLoai.TabIndex = 10;
+            this.cbSapxepLoai.SelectedIndexChanged += new System.EventHandler(this.cbSapxepLoai_SelectedIndexChanged);
             // 
             // btnTimkiemLoai
             // 

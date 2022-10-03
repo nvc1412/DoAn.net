@@ -137,7 +137,7 @@ namespace QuanLyCuaHangGiaDung.Controller
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    Model.NhanVien obj = new Model.NhanVien();
+                    NhanVien obj = new NhanVien();
                     obj.MaNV = (string)dr["MaNV"];
                     obj.TenNV = (string)dr["TenNV"];
                     obj.NgaySinh = (DateTime)dr["NgaySinh"];
