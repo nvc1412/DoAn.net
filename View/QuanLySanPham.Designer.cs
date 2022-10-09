@@ -39,16 +39,14 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtTensp = new System.Windows.Forms.TextBox();
             this.cbDvt = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtTenlsp = new System.Windows.Forms.TextBox();
+            this.txtTensp = new System.Windows.Forms.TextBox();
             this.txtMasp = new System.Windows.Forms.TextBox();
             this.cbLsp = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTaikhoan = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.txtGiaban = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -144,6 +142,7 @@
             this.dgvSanpham.RowTemplate.Height = 24;
             this.dgvSanpham.Size = new System.Drawing.Size(907, 426);
             this.dgvSanpham.TabIndex = 0;
+            this.dgvSanpham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSanpham_CellClick);
             // 
             // groupBox4
             // 
@@ -172,6 +171,7 @@
             this.btnXuatexcel.Text = "Xuất Excel";
             this.btnXuatexcel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXuatexcel.UseVisualStyleBackColor = true;
+            this.btnXuatexcel.Click += new System.EventHandler(this.btnXuatexcel_Click);
             // 
             // btnThem
             // 
@@ -199,6 +199,7 @@
             this.btnSua.TabIndex = 8;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXoa
             // 
@@ -212,19 +213,18 @@
             this.btnXoa.TabIndex = 9;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.txtTensp);
             this.groupBox3.Controls.Add(this.cbDvt);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.txtTenlsp);
+            this.groupBox3.Controls.Add(this.txtTensp);
             this.groupBox3.Controls.Add(this.txtMasp);
             this.groupBox3.Controls.Add(this.cbLsp);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.txtTaikhoan);
             this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.txtGiaban);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Left;
@@ -235,13 +235,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin sản phẩm";
             // 
-            // txtTensp
-            // 
-            this.txtTensp.Location = new System.Drawing.Point(145, 119);
-            this.txtTensp.Name = "txtTensp";
-            this.txtTensp.Size = new System.Drawing.Size(118, 22);
-            this.txtTensp.TabIndex = 2;
-            // 
             // cbDvt
             // 
             this.cbDvt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -249,32 +242,32 @@
             this.cbDvt.Items.AddRange(new object[] {
             "Bộ",
             "Chiếc"});
-            this.cbDvt.Location = new System.Drawing.Point(145, 336);
+            this.cbDvt.Location = new System.Drawing.Point(140, 283);
             this.cbDvt.Name = "cbDvt";
             this.cbDvt.Size = new System.Drawing.Size(90, 24);
-            this.cbDvt.TabIndex = 6;
+            this.cbDvt.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label3.Location = new System.Drawing.Point(44, 66);
+            this.label3.Location = new System.Drawing.Point(39, 68);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 16);
             this.label3.TabIndex = 0;
             this.label3.Text = "Mã sản phẩm:";
             // 
-            // txtTenlsp
+            // txtTensp
             // 
-            this.txtTenlsp.Enabled = false;
-            this.txtTenlsp.Location = new System.Drawing.Point(145, 279);
-            this.txtTenlsp.Name = "txtTenlsp";
-            this.txtTenlsp.Size = new System.Drawing.Size(118, 22);
-            this.txtTenlsp.TabIndex = 5;
+            this.txtTensp.Enabled = false;
+            this.txtTensp.Location = new System.Drawing.Point(140, 174);
+            this.txtTensp.Name = "txtTensp";
+            this.txtTensp.Size = new System.Drawing.Size(118, 22);
+            this.txtTensp.TabIndex = 3;
             // 
             // txtMasp
             // 
-            this.txtMasp.Location = new System.Drawing.Point(145, 63);
+            this.txtMasp.Location = new System.Drawing.Point(140, 65);
             this.txtMasp.Name = "txtMasp";
             this.txtMasp.Size = new System.Drawing.Size(90, 22);
             this.txtMasp.TabIndex = 1;
@@ -283,17 +276,17 @@
             // 
             this.cbLsp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLsp.FormattingEnabled = true;
-            this.cbLsp.Location = new System.Drawing.Point(145, 224);
+            this.cbLsp.Location = new System.Drawing.Point(140, 118);
             this.cbLsp.Name = "cbLsp";
             this.cbLsp.Size = new System.Drawing.Size(118, 24);
-            this.cbLsp.TabIndex = 4;
+            this.cbLsp.TabIndex = 2;
             this.cbLsp.SelectedIndexChanged += new System.EventHandler(this.cbLsp_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label4.Location = new System.Drawing.Point(39, 122);
+            this.label4.Location = new System.Drawing.Point(34, 177);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(96, 16);
             this.label4.TabIndex = 2;
@@ -303,7 +296,7 @@
             // 
             this.txtTaikhoan.AutoSize = true;
             this.txtTaikhoan.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.txtTaikhoan.Location = new System.Drawing.Point(65, 339);
+            this.txtTaikhoan.Location = new System.Drawing.Point(60, 286);
             this.txtTaikhoan.Name = "txtTaikhoan";
             this.txtTaikhoan.Size = new System.Drawing.Size(70, 16);
             this.txtTaikhoan.TabIndex = 14;
@@ -313,34 +306,24 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label9.Location = new System.Drawing.Point(78, 176);
+            this.label9.Location = new System.Drawing.Point(73, 229);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(57, 16);
             this.label9.TabIndex = 12;
             this.label9.Text = "Giá bán:";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label7.Location = new System.Drawing.Point(16, 285);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(121, 16);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Tên loại sản phẩm:";
-            // 
             // txtGiaban
             // 
-            this.txtGiaban.Location = new System.Drawing.Point(145, 173);
+            this.txtGiaban.Location = new System.Drawing.Point(140, 226);
             this.txtGiaban.Name = "txtGiaban";
             this.txtGiaban.Size = new System.Drawing.Size(118, 22);
-            this.txtGiaban.TabIndex = 3;
+            this.txtGiaban.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label6.Location = new System.Drawing.Point(39, 227);
+            this.label6.Location = new System.Drawing.Point(34, 121);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(98, 16);
             this.label6.TabIndex = 6;
@@ -377,13 +360,13 @@
             this.cbSapxep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSapxep.FormattingEnabled = true;
             this.cbSapxep.Items.AddRange(new object[] {
-            "Theo mã",
-            "Theo tên",
-            "Theo hệ số lương"});
+            "Giá bán tăng dần",
+            "Giá bán giảm dần"});
             this.cbSapxep.Location = new System.Drawing.Point(812, 25);
             this.cbSapxep.Name = "cbSapxep";
             this.cbSapxep.Size = new System.Drawing.Size(135, 24);
             this.cbSapxep.TabIndex = 4;
+            this.cbSapxep.SelectedIndexChanged += new System.EventHandler(this.cbSapxep_SelectedIndexChanged);
             // 
             // btnTimkiem
             // 
@@ -398,6 +381,7 @@
             this.btnTimkiem.Text = "Tìm kiếm";
             this.btnTimkiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnTimkiem.UseVisualStyleBackColor = true;
+            this.btnTimkiem.Click += new System.EventHandler(this.btnTimkiem_Click);
             // 
             // txtTimkiem
             // 
@@ -725,14 +709,11 @@
         private System.Windows.Forms.TabPage tabLoaisanpham;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cbDvt;
-        private System.Windows.Forms.TextBox txtTenlsp;
         private System.Windows.Forms.ComboBox cbLsp;
         private System.Windows.Forms.Label txtTaikhoan;
         private System.Windows.Forms.TextBox txtGiaban;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtTensp;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtMasp;
         private System.Windows.Forms.Label label3;
@@ -769,5 +750,6 @@
         private System.Windows.Forms.TextBox txtTimkiemLoai;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtMaloai;
+        private System.Windows.Forms.TextBox txtTensp;
     }
 }

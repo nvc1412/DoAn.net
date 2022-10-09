@@ -285,5 +285,66 @@ namespace QuanLyCuaHangGiaDung.Controller
             }
             return tenloai;
         }
+
+        public List<SanPham> TimSP(string Query)
+        {
+            try
+            {
+                List<SanPham> data = new List<SanPham>();
+
+                SqlConnection conn = new SqlConnection(connect);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(Query, conn);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    SanPham obj = new SanPham();
+                    obj.MaSP = (string)dr["MaSP"];
+                    obj.TenSP = (string)dr["TenSP"];
+                    obj.Loai = (string)dr["Loai"];
+                    obj.GiaBan = (double)dr["GiaBan"];
+                    obj.DVT = (string)dr["DVT"];
+                    data.Add(obj);
+                }
+                conn.Close();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi: " + ex.Message);
+            }
+            return null;
+        }
+
+        public List<SanPham> SapXepSP(string sapxep)
+        {
+            try
+            {
+                List<SanPham> data = new List<SanPham>();
+
+                SqlConnection conn = new SqlConnection(connect);
+                conn.Open();
+                string Query = $"SELECT * FROM SanPham ORDER BY {sapxep}";
+                SqlCommand cmd = new SqlCommand(Query, conn);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    SanPham obj = new SanPham();
+                    obj.MaSP = (string)dr["MaSP"];
+                    obj.TenSP = (string)dr["TenSP"];
+                    obj.Loai = (string)dr["Loai"];
+                    obj.GiaBan = (double)dr["GiaBan"];
+                    obj.DVT = (string)dr["DVT"];
+                    data.Add(obj);
+                }
+                conn.Close();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi: " + ex.Message);
+            }
+            return null;
+        }
     }
 }
