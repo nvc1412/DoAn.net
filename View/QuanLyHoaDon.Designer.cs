@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyHoaDon));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbTongtien = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtDongia = new System.Windows.Forms.TextBox();
             this.cbManv = new System.Windows.Forms.ComboBox();
             this.txtTennv = new System.Windows.Forms.TextBox();
             this.cbMasp = new System.Windows.Forms.ComboBox();
@@ -60,10 +64,6 @@
             this.btnTimkiem = new System.Windows.Forms.Button();
             this.txtTimkiem = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtDongia = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.lbTongtien = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -102,6 +102,45 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin hóa đơn";
             // 
+            // lbTongtien
+            // 
+            this.lbTongtien.AutoSize = true;
+            this.lbTongtien.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTongtien.ForeColor = System.Drawing.Color.Lime;
+            this.lbTongtien.Location = new System.Drawing.Point(988, 89);
+            this.lbTongtien.Name = "lbTongtien";
+            this.lbTongtien.Size = new System.Drawing.Size(18, 20);
+            this.lbTongtien.TabIndex = 23;
+            this.lbTongtien.Text = "đ";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.Location = new System.Drawing.Point(905, 55);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(114, 20);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "TỔNG TIỀN:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label10.Location = new System.Drawing.Point(667, 129);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(56, 16);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Đơn giá:";
+            // 
+            // txtDongia
+            // 
+            this.txtDongia.Location = new System.Drawing.Point(762, 126);
+            this.txtDongia.Name = "txtDongia";
+            this.txtDongia.Size = new System.Drawing.Size(98, 22);
+            this.txtDongia.TabIndex = 19;
+            // 
             // cbManv
             // 
             this.cbManv.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -113,6 +152,7 @@
             // 
             // txtTennv
             // 
+            this.txtTennv.Enabled = false;
             this.txtTennv.Location = new System.Drawing.Point(404, 84);
             this.txtTennv.Name = "txtTennv";
             this.txtTennv.Size = new System.Drawing.Size(200, 22);
@@ -150,6 +190,7 @@
             // 
             // txtDvt
             // 
+            this.txtDvt.Enabled = false;
             this.txtDvt.Location = new System.Drawing.Point(762, 34);
             this.txtDvt.Name = "txtDvt";
             this.txtDvt.Size = new System.Drawing.Size(98, 22);
@@ -167,6 +208,7 @@
             // 
             // txtTensp
             // 
+            this.txtTensp.Enabled = false;
             this.txtTensp.Location = new System.Drawing.Point(404, 129);
             this.txtTensp.Name = "txtTensp";
             this.txtTensp.Size = new System.Drawing.Size(200, 22);
@@ -424,45 +466,6 @@
             this.label2.Size = new System.Drawing.Size(82, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Tìm kiếm:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label10.Location = new System.Drawing.Point(667, 129);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 16);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "Đơn giá:";
-            // 
-            // txtDongia
-            // 
-            this.txtDongia.Location = new System.Drawing.Point(762, 126);
-            this.txtDongia.Name = "txtDongia";
-            this.txtDongia.Size = new System.Drawing.Size(98, 22);
-            this.txtDongia.TabIndex = 19;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(905, 55);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(114, 20);
-            this.label11.TabIndex = 22;
-            this.label11.Text = "TỔNG TIỀN:";
-            // 
-            // lbTongtien
-            // 
-            this.lbTongtien.AutoSize = true;
-            this.lbTongtien.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTongtien.ForeColor = System.Drawing.Color.Lime;
-            this.lbTongtien.Location = new System.Drawing.Point(988, 89);
-            this.lbTongtien.Name = "lbTongtien";
-            this.lbTongtien.Size = new System.Drawing.Size(18, 20);
-            this.lbTongtien.TabIndex = 23;
-            this.lbTongtien.Text = "đ";
             // 
             // QuanLyHoaDon
             // 
