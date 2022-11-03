@@ -131,7 +131,7 @@ namespace QuanLyCuaHangGiaDung.View
             }
             else
             {
-                string Query = $"UPDATE LoaiSP SET TenLoai='{txtTenloai.Text}' WHERE MaLoai=N'{txtMaloai.Text}'";
+                string Query = $"UPDATE LoaiSP SET TenLoai= N'{txtTenloai.Text}' WHERE MaLoai=N'{txtMaloai.Text}'";
                 int sl = sp.ThemSuaXoaLSP(Query);
                 if (sl > 0)
                 {
@@ -241,7 +241,7 @@ namespace QuanLyCuaHangGiaDung.View
 
         private void cbLsp_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtTensp.Text = sp.getTenLoai(cbLsp.Text);
+            txtTenlsp.Text = sp.getTenLoai(cbLsp.Text);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -280,6 +280,7 @@ namespace QuanLyCuaHangGiaDung.View
                 if (row >= 0)
                 {
                     txtMasp.Text = (string)dgvSanpham.Rows[row].Cells["MaSP"].Value;
+                    txtTensp.Text = (string)dgvSanpham.Rows[row].Cells["TenSP"].Value;
                     cbLsp.Text = (string)dgvSanpham.Rows[row].Cells["Loai"].Value;
                     txtGiaban.Text = dgvSanpham.Rows[row].Cells["GiaBan"].Value.ToString();
                     cbDvt.Text = (string)dgvSanpham.Rows[row].Cells["DVT"].Value;

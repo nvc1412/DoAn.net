@@ -76,6 +76,7 @@
             this.txtTimkiemLoai = new System.Windows.Forms.TextBox();
             this.btnLammoiLoai = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
+            this.txtTenlsp = new System.Windows.Forms.TextBox();
             this.tabSanpham.SuspendLayout();
             this.tabDssanpham.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -217,6 +218,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtTenlsp);
             this.groupBox3.Controls.Add(this.cbDvt);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.txtTensp);
@@ -259,7 +261,6 @@
             // 
             // txtTensp
             // 
-            this.txtTensp.Enabled = false;
             this.txtTensp.Location = new System.Drawing.Point(140, 174);
             this.txtTensp.Name = "txtTensp";
             this.txtTensp.Size = new System.Drawing.Size(118, 22);
@@ -670,6 +671,14 @@
             this.label15.TabIndex = 1;
             this.label15.Text = "Tìm kiếm:";
             // 
+            // txtTenlsp
+            // 
+            this.txtTenlsp.Enabled = false;
+            this.txtTenlsp.Location = new System.Drawing.Point(140, 146);
+            this.txtTenlsp.Name = "txtTenlsp";
+            this.txtTenlsp.Size = new System.Drawing.Size(118, 22);
+            this.txtTenlsp.TabIndex = 15;
+            // 
             // QuanLySanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -751,5 +760,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtMaloai;
         private System.Windows.Forms.TextBox txtTensp;
+        private System.Windows.Forms.TextBox txtTenlsp;
     }
 }

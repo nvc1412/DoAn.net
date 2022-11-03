@@ -16,9 +16,9 @@ namespace QuanLyCuaHangGiaDung
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new DangNhap());
+            Application.Run(new DangNhap());
 
-            Application.Run(new View.HeThong());
+            //Application.Run(new View.HeThong());
             //Application.Run(new View.QuanLyHoaDon());
             //Application.Run(new View.QuanLyNhanVien());
         }

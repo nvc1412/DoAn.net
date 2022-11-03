@@ -205,7 +205,7 @@
             // 
             this.cbTaikhoan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTaikhoan.FormattingEnabled = true;
-            this.cbTaikhoan.Location = new System.Drawing.Point(124, 362);
+            this.cbTaikhoan.Location = new System.Drawing.Point(128, 362);
             this.cbTaikhoan.Name = "cbTaikhoan";
             this.cbTaikhoan.Size = new System.Drawing.Size(98, 24);
             this.cbTaikhoan.TabIndex = 8;
@@ -252,7 +252,7 @@
             // 
             // txtHesoluong
             // 
-            this.txtHesoluong.Location = new System.Drawing.Point(124, 313);
+            this.txtHesoluong.Location = new System.Drawing.Point(128, 313);
             this.txtHesoluong.Name = "txtHesoluong";
             this.txtHesoluong.Size = new System.Drawing.Size(98, 22);
             this.txtHesoluong.TabIndex = 7;

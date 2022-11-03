@@ -121,12 +121,12 @@ namespace QuanLyCuaHangGiaDung.View
             {
                 lbTK.ForeColor = Color.Red;
             }
-            //else
-            //{
-            //    btnQlnv.Enabled = false;
-            //    btnQltk.Enabled = false;
-            //    btnBctk.Enabled = false;
-            //}
+            else
+            {
+                btnQlnv.Enabled = false;
+                btnQltk.Enabled = false;
+                btnBctk.Enabled = false;
+            }
         }
 
         public bool checkQuyen(string tk)
