@@ -26,8 +26,12 @@ namespace QuanLyCuaHangGiaDung.View
         {
             txtMasp.Focus();
             dgvSanpham.DataSource = sp.getDataSP();
+
             cbLsp.DisplayMember = "MaLoai";
             cbLsp.DataSource = sp.getDatacombo();
+
+            cbMancc.DisplayMember = "MaNCC";
+
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
 
@@ -47,6 +51,7 @@ namespace QuanLyCuaHangGiaDung.View
             {
                 dgvLoaisanpham.DataSource = sp.getDataLSP();
                 txtMaloai.Focus();
+                cbMancc.DataSource = sp.getDatacomboNCC();
             }
         }
 
@@ -55,6 +60,7 @@ namespace QuanLyCuaHangGiaDung.View
             txtMaloai.Text = null;
             txtTenloai.Text = null;
             txtTimkiemLoai.Text = null;
+            cbMancc.DataSource = sp.getDatacomboNCC();
             dgvLoaisanpham.DataSource = sp.getDataLSP();
             btnSuaLoai.Enabled = false;
             btnXoaLoai.Enabled = false;
@@ -64,7 +70,7 @@ namespace QuanLyCuaHangGiaDung.View
 
         private void btnThemLoai_Click(object sender, EventArgs e)
         {
-            if (txtMaloai.Text == "" || txtTenloai.Text == "")
+            if (txtMaloai.Text == "" || txtTenloai.Text == "" || cbMancc.Text == "")
             {
                 MessageBox.Show("Không được để trống!");
             }
@@ -74,7 +80,7 @@ namespace QuanLyCuaHangGiaDung.View
             }
             else
             {
-                string Query = $"INSERT INTO LoaiSP(MaLoai, TenLoai) Values (N'{txtMaloai.Text}', N'{txtTenloai.Text}')";
+                string Query = $"INSERT INTO LoaiSP(MaLoai, TenLoai, MaNCC) Values (N'{txtMaloai.Text}', N'{txtTenloai.Text}', N'{cbMancc.Text}')";
                 int sl = sp.ThemSuaXoaLSP(Query);
                 if (sl > 0)
                 {
@@ -97,7 +103,7 @@ namespace QuanLyCuaHangGiaDung.View
         private void btnTimkiemLoai_Click(object sender, EventArgs e)
         {
             string Query = $"SELECT * FROM LoaiSP WHERE MaLoai LIKE N'%{txtTimkiemLoai.Text}%' " +
-                $"OR TenLoai LIKE N'%{txtTimkiemLoai.Text}%' ";
+                $"OR TenLoai LIKE N'%{txtTimkiemLoai.Text}%' OR MaNCC LIKE N'%{txtTimkiemLoai.Text}%' ";
             dgvLoaisanpham.DataSource = sp.TimLSP(Query);
         }
 
@@ -115,6 +121,7 @@ namespace QuanLyCuaHangGiaDung.View
                 {
                     txtMaloai.Text = (string)dgvLoaisanpham.Rows[row].Cells["MaLoai"].Value;
                     txtTenloai.Text = (string)dgvLoaisanpham.Rows[row].Cells["TenLoai"].Value;
+                    cbMancc.Text = (string)dgvLoaisanpham.Rows[row].Cells["MaNCC"].Value;
                 }
             }
             catch (Exception ex)
@@ -131,7 +138,7 @@ namespace QuanLyCuaHangGiaDung.View
             }
             else
             {
-                string Query = $"UPDATE LoaiSP SET TenLoai= N'{txtTenloai.Text}' WHERE MaLoai=N'{txtMaloai.Text}'";
+                string Query = $"UPDATE LoaiSP SET TenLoai= N'{txtTenloai.Text}', MaNCC= N'{cbMancc.Text}' WHERE MaLoai=N'{txtMaloai.Text}'";
                 int sl = sp.ThemSuaXoaLSP(Query);
                 if (sl > 0)
                 {
@@ -182,6 +189,11 @@ namespace QuanLyCuaHangGiaDung.View
                 default: sapxep = "MaLoai"; break;
             }
             dgvLoaisanpham.DataSource = sp.SapXepLSP(sapxep);
+        }
+
+        private void cbMancc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtTenncc.Text = sp.getTenNCC(cbMancc.Text);
         }
 
         // -------------------------Sản Phẩm---------------------------------------------------------------------------------

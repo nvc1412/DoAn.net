@@ -53,6 +53,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,16 +65,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConnectDB\Connect.cs" />
+    <Compile Include="Controller\BaoCaoThongKeController.cs" />
     <Compile Include="Controller\DangNhapController.cs" />
     <Compile Include="Controller\HoaDonController.cs" />
+    <Compile Include="Controller\KhachHangController.cs" />
+    <Compile Include="Controller\NhaCungCapController.cs" />
     <Compile Include="Controller\NhanVienController.cs" />
     <Compile Include="Controller\SanPhamController.cs" />
+    <Compile Include="Controller\TaiKhoanController.cs" />
+    <Compile Include="Model\BangLuong.cs" />
     <Compile Include="Model\HoaDon.cs" />
+    <Compile Include="Model\KhachHang.cs" />
     <Compile Include="Model\LoaiSP.cs" />
+    <Compile Include="Model\NhaCungCap.cs" />
     <Compile Include="Model\NhanVien.cs" />
     <Compile Include="Model\SanPham.cs" />
     <Compile Include="Model\TK.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="View\BaoCaoThongKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\BaoCaoThongKe.Designer.cs">
+      <DependentUpon>BaoCaoThongKe.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +120,12 @@
     <Compile Include="View\QuanLyHoaDon.Designer.cs">
       <DependentUpon>QuanLyHoaDon.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\QuanLyKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\QuanLyKhachHang.Designer.cs">
+      <DependentUpon>QuanLyKhachHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\QuanLyNhaCungCap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,12 +137,6 @@
     </Compile>
     <Compile Include="View\QuanLyNhanVien.Designer.cs">
       <DependentUpon>QuanLyNhanVien.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\QuanLyPhieuNhap.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\QuanLyPhieuNhap.Designer.cs">
-      <DependentUpon>QuanLyPhieuNhap.cs</DependentUpon>
     </Compile>
     <Compile Include="View\QuanLySanPham.cs">
       <SubType>Form</SubType>
@@ -135,6 +150,9 @@
     <Compile Include="View\QuanLyTaiKhoan.Designer.cs">
       <DependentUpon>QuanLyTaiKhoan.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\BaoCaoThongKe.resx">
+      <DependentUpon>BaoCaoThongKe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,14 +169,14 @@
     <EmbeddedResource Include="View\QuanLyHoaDon.resx">
       <DependentUpon>QuanLyHoaDon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\QuanLyKhachHang.resx">
+      <DependentUpon>QuanLyKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\QuanLyNhaCungCap.resx">
       <DependentUpon>QuanLyNhaCungCap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\QuanLyNhanVien.resx">
       <DependentUpon>QuanLyNhanVien.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\QuanLyPhieuNhap.resx">
-      <DependentUpon>QuanLyPhieuNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\QuanLySanPham.resx">
       <DependentUpon>QuanLySanPham.cs</DependentUpon>

@@ -12,20 +12,20 @@ using System.Windows.Forms;
 
 namespace QuanLyCuaHangGiaDung.View
 {
-    public partial class QuanLyNhaCungCap : Form
+    public partial class QuanLyKhachHang : Form
     {
-        NhaCungCapController ncc = new NhaCungCapController();
+        KhachHangController kh = new KhachHangController();
         Regex isValidInput = new Regex(@"^\d{9,11}$");
         Regex number = new Regex(@"^[-+]?[0-9]*.?[0-9]+$");
-        public QuanLyNhaCungCap()
+        public QuanLyKhachHang()
         {
             InitializeComponent();
         }
 
-        private void QuanLyNhaCungCap_Load(object sender, EventArgs e)
+        private void QuanLyKhachHang_Load(object sender, EventArgs e)
         {
-            txtMancc.Focus();
-            dgvNhacungcap.DataSource = ncc.getData();
+            txtMakh.Focus();
+            dgvKhachhang.DataSource = kh.getData();
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
         }
@@ -33,34 +33,34 @@ namespace QuanLyCuaHangGiaDung.View
         public void setNull()
         {
             txtTimkiem.Text = null;
-            txtMancc.Text = null;
-            txtTenncc.Text = null;
+            txtMakh.Text = null;
+            txtTenkh.Text = null;
             txtDiachi.Text = null;
             txtSdt.Text = null;
             cbSapxep.Text = null;
-            dgvNhacungcap.DataSource = ncc.getData();
+            dgvKhachhang.DataSource = kh.getData();
             btnThem.Enabled = true;
             btnXuatexcel.Enabled = true;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
-            txtMancc.Enabled = true;
+            txtMakh.Enabled = true;
         }
 
         private void btnLammoi_Click(object sender, EventArgs e)
         {
             setNull();
-            txtMancc.Focus();
+            txtMakh.Focus();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (txtMancc.Text == "" || txtTenncc.Text == "" || txtDiachi.Text == "" || txtSdt.Text == "")
+            if (txtMakh.Text == "" || txtTenkh.Text == "" || txtDiachi.Text == "" || txtSdt.Text == "")
             {
                 MessageBox.Show("Không được để trống!");
             }
-            else if (ncc.getMaNCC(txtMancc.Text) > 0)
+            else if (kh.getMaKH(txtMakh.Text) > 0)
             {
-                MessageBox.Show("Mã nhà cung cấp đã tồn tại!");
+                MessageBox.Show("Mã khách hàng đã tồn tại!");
             }
             else if (!isValidInput.IsMatch(txtSdt.Text))
             {
@@ -68,8 +68,8 @@ namespace QuanLyCuaHangGiaDung.View
             }
             else
             {
-                string Query = $"INSERT INTO NhaCungCap(MaNCC, TenNCC, DiaChi, Sdt) Values(N'{txtMancc.Text}', N'{txtTenncc.Text}', N'{txtDiachi.Text}', N'{txtSdt.Text}')";
-                int sl = ncc.ThemSuaXoaNCC(Query);
+                string Query = $"INSERT INTO KhachHang(MaKH, TenKH, DiaChi, Sdt) Values(N'{txtMakh.Text}', N'{txtTenkh.Text}', N'{txtDiachi.Text}', N'{txtSdt.Text}')";
+                int sl = kh.ThemSuaXoaKH(Query);
                 if (sl > 0)
                 {
                     MessageBox.Show("Thêm mới thành công!");
@@ -84,7 +84,7 @@ namespace QuanLyCuaHangGiaDung.View
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (txtMancc.Text == "" || txtTenncc.Text == "" || txtDiachi.Text == "" || txtSdt.Text == "")
+            if (txtMakh.Text == "" || txtTenkh.Text == "" || txtDiachi.Text == "" || txtSdt.Text == "")
             {
                 MessageBox.Show("Không được để trống!");
             }
@@ -94,8 +94,8 @@ namespace QuanLyCuaHangGiaDung.View
             }
             else
             {
-                string Query = $"UPDATE NhaCungCap SET TenNCC=N'{txtTenncc.Text}', DiaChi=N'{txtDiachi.Text}', Sdt=N'{txtSdt.Text}' WHERE MaNCC=N'{txtMancc.Text}'";
-                int sl = ncc.ThemSuaXoaNCC(Query);
+                string Query = $"UPDATE KhachHang SET TenKH=N'{txtTenkh.Text}', DiaChi=N'{txtDiachi.Text}', Sdt=N'{txtSdt.Text}' WHERE MaKH=N'{txtMakh.Text}'";
+                int sl = kh.ThemSuaXoaKH(Query);
                 if (sl > 0)
                 {
                     MessageBox.Show("Sửa thành công!");
@@ -110,8 +110,8 @@ namespace QuanLyCuaHangGiaDung.View
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            string Query = $"DELETE FROM NhaCungCap WHERE MaNCC=N'{txtMancc.Text}'";
-            int sl = ncc.ThemSuaXoaNCC(Query);
+            string Query = $"DELETE FROM KhachHang WHERE MaKH=N'{txtMakh.Text}'";
+            int sl = kh.ThemSuaXoaKH(Query);
             if (sl > 0)
             {
                 MessageBox.Show("Xóa thành công!");
@@ -129,27 +129,27 @@ namespace QuanLyCuaHangGiaDung.View
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 //gọi hàm ToExcel() với tham số là dgvNhanvien và filename từ SaveFileDialog
-                ncc.ToExcel(dgvNhacungcap, saveFileDialog1.FileName);
+                kh.ToExcel(dgvKhachhang, saveFileDialog1.FileName);
             }
         }
 
-        private void dgvNhacungcap_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvKhachhang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
             btnThem.Enabled = false;
             btnXuatexcel.Enabled = false;
-            txtMancc.Enabled = false;
+            txtMakh.Enabled = false;
             try
             {
                 int row = e.RowIndex;
                 int col = e.ColumnIndex;
                 if (row >= 0)
                 {
-                    txtMancc.Text = (string)dgvNhacungcap.Rows[row].Cells["MaNCC"].Value;
-                    txtTenncc.Text = (string)dgvNhacungcap.Rows[row].Cells["TenNCC"].Value;
-                    txtDiachi.Text = (string)dgvNhacungcap.Rows[row].Cells["DiaChi"].Value;
-                    txtSdt.Text = (string)dgvNhacungcap.Rows[row].Cells["Sdt"].Value;
+                    txtMakh.Text = (string)dgvKhachhang.Rows[row].Cells["MaKH"].Value;
+                    txtTenkh.Text = (string)dgvKhachhang.Rows[row].Cells["TenKH"].Value;
+                    txtDiachi.Text = (string)dgvKhachhang.Rows[row].Cells["DiaChi"].Value;
+                    txtSdt.Text = (string)dgvKhachhang.Rows[row].Cells["Sdt"].Value;
                 }
             }
             catch (Exception ex)
@@ -160,21 +160,21 @@ namespace QuanLyCuaHangGiaDung.View
 
         private void btnTimkiem_Click(object sender, EventArgs e)
         {
-            string Query = $"SELECT * FROM NhaCungCap WHERE MaNCC LIKE N'%{txtTimkiem.Text}%' OR TenNCC LIKE N'%{txtTimkiem.Text}%'" +
+            string Query = $"SELECT * FROM KhachHang WHERE MaKH LIKE N'%{txtTimkiem.Text}%' OR TenKH LIKE N'%{txtTimkiem.Text}%'" +
                 $" OR DiaChi LIKE N'%{txtTimkiem.Text}%' OR Sdt LIKE N'%{txtTimkiem.Text}%'";
-            dgvNhacungcap.DataSource = ncc.TimNCC(Query);
+            dgvKhachhang.DataSource = kh.TimKH(Query);
         }
 
         private void cbSapxep_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string sapxep = "MaNCC";
+            string sapxep = "MaKH";
             switch (cbSapxep.SelectedIndex)
             {
-                case 0: sapxep = "MaNCC"; break;
-                case 1: sapxep = "MaNCC DESC"; break;
-                default: sapxep = "MaNCC"; break;
+                case 0: sapxep = "MaKH"; break;
+                case 1: sapxep = "MaKH DESC"; break;
+                default: sapxep = "MaKH"; break;
             }
-            dgvNhacungcap.DataSource = ncc.SapXepNCC(sapxep);
+            dgvKhachhang.DataSource = kh.SapXepKH(sapxep);
         }
     }
 }

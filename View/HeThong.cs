@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyCuaHangGiaDung.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,7 @@ namespace QuanLyCuaHangGiaDung.View
 {
     public partial class HeThong : Form
     {
+        DangNhapController dn = new DangNhapController();
         private string tk;
         public HeThong()
         {
@@ -63,7 +65,7 @@ namespace QuanLyCuaHangGiaDung.View
             btnQlsp.BackColor = System.Drawing.Color.DarkCyan;
             btnQlhd.BackColor = System.Drawing.Color.DarkCyan;
             btnQlncc.BackColor = System.Drawing.Color.DarkCyan;
-            btnQlpn.BackColor = System.Drawing.Color.DarkCyan;
+            btnQlkh.BackColor = System.Drawing.Color.DarkCyan;
             btnQltk.BackColor = System.Drawing.Color.DarkCyan;
             btnBctk.BackColor = System.Drawing.Color.DarkCyan;
         }
@@ -83,13 +85,6 @@ namespace QuanLyCuaHangGiaDung.View
             OpenChildForm(new View.QuanLyNhanVien());
             setBackColor();
             btnQlnv.BackColor = System.Drawing.Color.Crimson;
-        }
-
-        private void btnQltk_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new View.QuanLyTaiKhoan());
-            setBackColor();
-            btnQltk.BackColor = System.Drawing.Color.Crimson;
         }
 
         private void btnQlncc_Click(object sender, EventArgs e)
@@ -113,11 +108,33 @@ namespace QuanLyCuaHangGiaDung.View
             btnQlhd.BackColor = System.Drawing.Color.Crimson;
         }
 
+        private void btnQltk_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new View.QuanLyTaiKhoan());
+            setBackColor();
+            btnQltk.BackColor = System.Drawing.Color.Crimson;
+        }
+
+        private void btnBctk_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new View.BaoCaoThongKe());
+            setBackColor();
+            btnBctk.BackColor = System.Drawing.Color.Crimson;
+        }
+
+        private void btnQlkh_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new View.QuanLyKhachHang());
+            setBackColor();
+            btnQlkh.BackColor = System.Drawing.Color.Crimson;
+        }
+
+
         string quyen;
         private void HeThong_Load(object sender, EventArgs e)
         {
             lbTK.Text = tk;
-            if (checkQuyen(tk)==true)
+            if (dn.checkQuyen(tk) == true)
             {
                 lbTK.ForeColor = Color.Red;
             }
@@ -129,38 +146,21 @@ namespace QuanLyCuaHangGiaDung.View
             }
         }
 
-        public bool checkQuyen(string tk)
-        {
-            try
-            {
-                SqlConnection conn = new SqlConnection(@"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
-                conn.Open();
-                string Query = $"SELECT COUNT(*) FROM TaiKhoan WHERE TaiKhoan = '{tk}' AND Quyen = 'admin'";
-                SqlCommand cmd = new SqlCommand(Query, conn);
-                int sl = (int)cmd.ExecuteScalar();
-                conn.Close();
-                if (sl == 1)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Loi: " + ex.Message);
-            }
 
-            return false;
+        private int imageNumber = 1;
+        private void LoadNextImage()
+        {
+            if(imageNumber == 5)
+            {
+                imageNumber = 1;
+            }
+            slidepic.ImageLocation = string.Format(@"Images\{0}.jpg", imageNumber);
+            imageNumber++;
         }
 
-        private void btnQlpn_Click(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            OpenChildForm(new View.QuanLyPhieuNhap());
-            setBackColor();
-            btnQlpn.BackColor = System.Drawing.Color.Crimson;
+            LoadNextImage();
         }
     }
 }

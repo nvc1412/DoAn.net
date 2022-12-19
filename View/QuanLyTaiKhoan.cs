@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
+using QuanLyCuaHangGiaDung.Controller;
 
 namespace QuanLyCuaHangGiaDung.View
 {
     public partial class QuanLyTaiKhoan : Form
     {
+        TaiKhoanController tk = new TaiKhoanController();
+
         public QuanLyTaiKhoan()
         {
             InitializeComponent();
@@ -21,34 +24,7 @@ namespace QuanLyCuaHangGiaDung.View
 
         private void QuanLyTaiKhoan_Load(object sender, EventArgs e)
         {
-            getData();
-        }
-
-        public void getData()
-        {
-            try
-            {
-                List<Model.TK> data = new List<Model.TK>();
-
-                SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-08FCIFR\SQLEXPRESS;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
-                conn.Open();
-                string Query = "SELECT * FROM TaiKhoan";
-                SqlCommand cmd = new SqlCommand(Query, conn);
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    Model.TK obj = new Model.TK();
-                    obj.TaiKhoan = (string)dr["TaiKhoan"];
-                    obj.MatKhau = (string)dr["MatKhau"];
-                    obj.Quyen = (string)dr["Quyen"];
-                    data.Add(obj);
-                }
-                conn.Close();
-                dgvTaikhoan.DataSource = data;
-            }catch (Exception ex)
-            {
-                MessageBox.Show("Loi: "+ex.Message);
-            }
+            dgvTaikhoan.DataSource = tk.getData();
         }
 
         public void setNull()
@@ -65,8 +41,10 @@ namespace QuanLyCuaHangGiaDung.View
             txtMatkhaumoi.Text = null;
             txtNlmkmoi.Text = null;
 
-            getData();
+            dgvTaikhoan.DataSource = tk.getData();
         }
+
+        
 
         private void btnTao_Click(object sender, EventArgs e)
         {
@@ -75,21 +53,24 @@ namespace QuanLyCuaHangGiaDung.View
                 if (txtTk.Text == "" || txtMk.Text == "" || cbQuyen.Text=="" || txtNlmk.Text=="")
                 {
                     MessageBox.Show("Không được để trống !!!");
-                }else if(txtMk.Text != txtNlmk.Text)
+                }
+                else if(txtMk.Text != txtNlmk.Text)
                 {
                     MessageBox.Show("Mật khẩu sai !!!");
                 }
+                else if (tk.getTK(txtTk.Text) > 0)
+                {
+                    MessageBox.Show("Tài khoản đã tồn tại!");
+                }
                 else
                 {
-                    SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-08FCIFR\SQLEXPRESS;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
-                    conn.Open();
-                    string Query = $"INSERT INTO TaiKhoan(TaiKhoan, MatKhau, Quyen) Values('{txtTk.Text}', '{ToMD5(txtMk.Text)}', '{cbQuyen.Text}')";
-                    SqlCommand cmd = new SqlCommand(Query, conn);
-                    int sl = cmd.ExecuteNonQuery();
-                    conn.Close();
+                    string Query = $"INSERT INTO TaiKhoan(TaiKhoan, MatKhau, Quyen) Values('{txtTk.Text}', '{tk.ToMD5(txtMk.Text)}', '{cbQuyen.Text}')";
+
+                    int sl = tk.ThemSuaXoaTK(Query);
                     if (sl > 0)
                     {
                         lbThemthanhcong.Text = "Thêm mới thành công!";
+                        MessageBox.Show("Thêm mới thành công!");
                         setNull();
                     }
                     else
@@ -103,19 +84,6 @@ namespace QuanLyCuaHangGiaDung.View
             {
                 MessageBox.Show("Loi: " + ex.Message);
             }
-        }
-
-        public string ToMD5(string str)
-        {
-            string result = "";
-            byte[] buffer = Encoding.UTF8.GetBytes(str);
-            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-            buffer = md5.ComputeHash(buffer);
-            for (int i = 0; i < buffer.Length; i++)
-            {
-                result += buffer[i].ToString("x2");
-            }
-            return result;
         }
 
         private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
@@ -156,7 +124,7 @@ namespace QuanLyCuaHangGiaDung.View
                 {
                     MessageBox.Show("Không được để trống !!!");
                 }
-                else if (checkTK(txtTaikhoan.Text, txtMatkhaucu.Text) == false)
+                else if (tk.checkTK(txtTaikhoan.Text, txtMatkhaucu.Text) == false)
                 {
                     MessageBox.Show("Mật khẩu cũ sai !!!");
                 }
@@ -166,12 +134,8 @@ namespace QuanLyCuaHangGiaDung.View
                 }
                 else
                 {
-                    SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-08FCIFR\SQLEXPRESS;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
-                    conn.Open();
-                    string Query = $"UPDATE TaiKhoan SET MatKhau='{ToMD5(txtMatkhaumoi.Text)}' WHERE TaiKhoan='{txtTaikhoan.Text}'";
-                    SqlCommand cmd = new SqlCommand(Query, conn);
-                    int sl = cmd.ExecuteNonQuery();
-                    conn.Close();
+                    string Query = $"UPDATE TaiKhoan SET MatKhau='{tk.ToMD5(txtMatkhaumoi.Text)}' WHERE TaiKhoan='{txtTaikhoan.Text}'";
+                    int sl = tk.ThemSuaXoaTK(Query);
                     if (sl > 0)
                     {
                         lbDoimatkhau.Text = "Đổi mật khẩu thành công!";
@@ -190,68 +154,18 @@ namespace QuanLyCuaHangGiaDung.View
             }
         }
 
-        public bool checkTK(string tk, string mk)
-        {
-            try
-            {
-                SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-08FCIFR\SQLEXPRESS;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
-                conn.Open();
-                string Query = $"SELECT COUNT(*) FROM TaiKhoan WHERE TaiKhoan = '{tk}' and MatKhau = '{ToMD5(mk)}'";
-                SqlCommand cmd = new SqlCommand(Query, conn);
-                int sl = (int)cmd.ExecuteScalar();
-                conn.Close();
-                if (sl == 1)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Loi: " + ex.Message);
-            }
-
-            return false;
-        }
-
         private void btnTimkiem_Click(object sender, EventArgs e)
         {
-            try
+            string Query;
+            if (rdTaiKhoan.Checked == true)
             {
-                List<Model.TK> data = new List<Model.TK>();
-
-                SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-08FCIFR\SQLEXPRESS;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
-                conn.Open();
-                string Query;
-                if (rdTaiKhoan.Checked == true)
-                {
-                    Query = $"SELECT * FROM TaiKhoan WHERE TaiKhoan LIKE '%{txtTimkiem.Text}%'";
-                }
-                else
-                {
-                    Query = $"SELECT * FROM TaiKhoan WHERE Quyen LIKE '{txtTimkiem.Text}%'";
-                }
-                
-                SqlCommand cmd = new SqlCommand(Query, conn);
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    Model.TK obj = new Model.TK();
-                    obj.TaiKhoan = (string)dr["TaiKhoan"];
-                    obj.MatKhau = (string)dr["MatKhau"];
-                    obj.Quyen = (string)dr["Quyen"];
-                    data.Add(obj);
-                }
-                conn.Close();
-                dgvTaikhoan.DataSource = data;
+                Query = $"SELECT * FROM TaiKhoan WHERE TaiKhoan LIKE '%{txtTimkiem.Text}%'";
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Loi: " + ex.Message);
+                Query = $"SELECT * FROM TaiKhoan WHERE Quyen LIKE '{txtTimkiem.Text}%'";
             }
+            dgvTaikhoan.DataSource = tk.TimTK(Query);
         }
 
 
@@ -260,12 +174,8 @@ namespace QuanLyCuaHangGiaDung.View
         {
             try
             {
-                SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-08FCIFR\SQLEXPRESS;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI");
-                conn.Open();
                 string Query = $"DELETE FROM TaiKhoan WHERE TaiKhoan='{Taikhoan}'";
-                SqlCommand cmd = new SqlCommand(Query, conn);
-                int sl = cmd.ExecuteNonQuery();
-                conn.Close();
+                int sl = tk.ThemSuaXoaTK(Query);
                 if (sl > 0)
                 {
                     MessageBox.Show("Xóa thành công!");

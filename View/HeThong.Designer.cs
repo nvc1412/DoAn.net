@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HeThong));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnBctk = new System.Windows.Forms.Button();
             this.btnQltk = new System.Windows.Forms.Button();
-            this.btnQlpn = new System.Windows.Forms.Button();
+            this.btnQlkh = new System.Windows.Forms.Button();
             this.btnQlncc = new System.Windows.Forms.Button();
             this.btnQlhd = new System.Windows.Forms.Button();
             this.btnQlsp = new System.Windows.Forms.Button();
@@ -46,13 +47,14 @@
             this.btnDangxuat = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel_hienthi = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.slidepic = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_hienthi.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.slidepic)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -62,7 +64,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1924, 56);
+            this.panel1.Size = new System.Drawing.Size(1593, 56);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -71,7 +73,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label1.Location = new System.Drawing.Point(745, 9);
+            this.label1.Location = new System.Drawing.Point(579, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(439, 42);
             this.label1.TabIndex = 0;
@@ -82,7 +84,7 @@
             this.panel2.BackColor = System.Drawing.Color.DarkTurquoise;
             this.panel2.Controls.Add(this.btnBctk);
             this.panel2.Controls.Add(this.btnQltk);
-            this.panel2.Controls.Add(this.btnQlpn);
+            this.panel2.Controls.Add(this.btnQlkh);
             this.panel2.Controls.Add(this.btnQlncc);
             this.panel2.Controls.Add(this.btnQlhd);
             this.panel2.Controls.Add(this.btnQlsp);
@@ -92,7 +94,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 56);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(343, 597);
+            this.panel2.Size = new System.Drawing.Size(343, 618);
             this.panel2.TabIndex = 1;
             // 
             // btnBctk
@@ -106,9 +108,10 @@
             this.btnBctk.Location = new System.Drawing.Point(0, 509);
             this.btnBctk.Name = "btnBctk";
             this.btnBctk.Size = new System.Drawing.Size(343, 48);
-            this.btnBctk.TabIndex = 14;
+            this.btnBctk.TabIndex = 12;
             this.btnBctk.Text = "BÁO CÁO - THỐNG KÊ";
             this.btnBctk.UseVisualStyleBackColor = false;
+            this.btnBctk.Click += new System.EventHandler(this.btnBctk_Click);
             // 
             // btnQltk
             // 
@@ -121,26 +124,26 @@
             this.btnQltk.Location = new System.Drawing.Point(0, 461);
             this.btnQltk.Name = "btnQltk";
             this.btnQltk.Size = new System.Drawing.Size(343, 48);
-            this.btnQltk.TabIndex = 13;
+            this.btnQltk.TabIndex = 14;
             this.btnQltk.Text = "QUẢN LÝ TÀI KHOẢN";
             this.btnQltk.UseVisualStyleBackColor = false;
             this.btnQltk.Click += new System.EventHandler(this.btnQltk_Click);
             // 
-            // btnQlpn
+            // btnQlkh
             // 
-            this.btnQlpn.BackColor = System.Drawing.Color.DarkCyan;
-            this.btnQlpn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnQlpn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQlpn.ForeColor = System.Drawing.Color.White;
-            this.btnQlpn.Image = ((System.Drawing.Image)(resources.GetObject("btnQlpn.Image")));
-            this.btnQlpn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQlpn.Location = new System.Drawing.Point(0, 413);
-            this.btnQlpn.Name = "btnQlpn";
-            this.btnQlpn.Size = new System.Drawing.Size(343, 48);
-            this.btnQlpn.TabIndex = 12;
-            this.btnQlpn.Text = "QUẢN LÝ PHIẾU NHẬP";
-            this.btnQlpn.UseVisualStyleBackColor = false;
-            this.btnQlpn.Click += new System.EventHandler(this.btnQlpn_Click);
+            this.btnQlkh.BackColor = System.Drawing.Color.DarkCyan;
+            this.btnQlkh.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnQlkh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQlkh.ForeColor = System.Drawing.Color.White;
+            this.btnQlkh.Image = ((System.Drawing.Image)(resources.GetObject("btnQlkh.Image")));
+            this.btnQlkh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQlkh.Location = new System.Drawing.Point(0, 413);
+            this.btnQlkh.Name = "btnQlkh";
+            this.btnQlkh.Size = new System.Drawing.Size(343, 48);
+            this.btnQlkh.TabIndex = 13;
+            this.btnQlkh.Text = "QUẢN LÝ KHÁCH HÀNG";
+            this.btnQlkh.UseVisualStyleBackColor = false;
+            this.btnQlkh.Click += new System.EventHandler(this.btnQlkh_Click);
             // 
             // btnQlncc
             // 
@@ -284,30 +287,37 @@
             // panel_hienthi
             // 
             this.panel_hienthi.BackColor = System.Drawing.Color.Cornsilk;
-            this.panel_hienthi.Controls.Add(this.pictureBox2);
+            this.panel_hienthi.Controls.Add(this.slidepic);
             this.panel_hienthi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_hienthi.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel_hienthi.Location = new System.Drawing.Point(343, 56);
             this.panel_hienthi.Name = "panel_hienthi";
-            this.panel_hienthi.Size = new System.Drawing.Size(1581, 597);
+            this.panel_hienthi.Size = new System.Drawing.Size(1250, 618);
             this.panel_hienthi.TabIndex = 2;
             // 
-            // pictureBox2
+            // slidepic
             // 
-            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1581, 597);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.slidepic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.slidepic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.slidepic.Image = ((System.Drawing.Image)(resources.GetObject("slidepic.Image")));
+            this.slidepic.Location = new System.Drawing.Point(0, 0);
+            this.slidepic.Name = "slidepic";
+            this.slidepic.Size = new System.Drawing.Size(1250, 618);
+            this.slidepic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.slidepic.TabIndex = 1;
+            this.slidepic.TabStop = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 2000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // HeThong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 653);
+            this.ClientSize = new System.Drawing.Size(1593, 674);
             this.Controls.Add(this.panel_hienthi);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -324,7 +334,7 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel_hienthi.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.slidepic)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -342,12 +352,13 @@
         private System.Windows.Forms.Button btnQlhd;
         private System.Windows.Forms.Button btnQlsp;
         private System.Windows.Forms.Button btnQlnv;
-        private System.Windows.Forms.Button btnQltk;
-        private System.Windows.Forms.Button btnQlpn;
+        private System.Windows.Forms.Button btnQlkh;
         private System.Windows.Forms.Button btnQlncc;
-        private System.Windows.Forms.Button btnBctk;
+        private System.Windows.Forms.Button btnQltk;
         private System.Windows.Forms.Panel panel_hienthi;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox slidepic;
         private System.Windows.Forms.Label lbTK;
+        private System.Windows.Forms.Button btnBctk;
+        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -46,7 +46,6 @@ D:\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCu
 D:\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.QuanLyHoaDon.resources
 D:\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.QuanLyNhaCungCap.resources
 D:\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.QuanLyNhanVien.resources
-D:\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.QuanLyPhieuNhap.resources
 D:\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.QuanLySanPham.resources
 D:\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.QuanLyTaiKhoan.resources
 D:\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.csproj.GenerateResource.cache
@@ -107,3 +106,5 @@ D:\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\bin\Debug\ru\Micro
 D:\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.csproj.CopyComplete
+D:\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.BaoCaoThongKe.resources
+D:\Documents\Đồ án lập trình .NET\QuanLyCuaHangGiaDung\obj\Debug\QuanLyCuaHangGiaDung.View.QuanLyKhachHang.resources

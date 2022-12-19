@@ -10,9 +10,11 @@ namespace QuanLyCuaHangGiaDung.Model
     {
         private string _MaLoai;
         private string _TenLoai;
+        private string _MaNCC;
 
         public string MaLoai { get => _MaLoai; set => _MaLoai = value; }
         public string TenLoai { get => _TenLoai; set => _TenLoai = value; }
+        public string MaNCC { get => _MaNCC; set => _MaNCC = value; }
 
         public LoaiSP() { }
     }

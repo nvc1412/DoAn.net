@@ -1,4 +1,5 @@
-﻿using QuanLyCuaHangGiaDung.Model;
+﻿using QuanLyCuaHangGiaDung.ConnectDB;
+using QuanLyCuaHangGiaDung.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -11,14 +12,15 @@ namespace QuanLyCuaHangGiaDung.Controller
 {
     public class NhanVienController
     {
-        private string connect = @"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI";
+        //private string connect = @"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI";
+        Connect cn = new Connect();
         public List<NhanVien> getData()
         {
             try
             {
                 List<NhanVien> data = new List<NhanVien>();
 
-                SqlConnection conn = new SqlConnection(connect);
+                SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
                 string Query = "SELECT * FROM NhanVien";
                 SqlCommand cmd = new SqlCommand(Query, conn);
@@ -52,7 +54,7 @@ namespace QuanLyCuaHangGiaDung.Controller
             {
                 List<TK> data = new List<TK>();
 
-                SqlConnection conn = new SqlConnection(connect);
+                SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
                 string Query = "SELECT TaiKhoan FROM TaiKhoan";
                 SqlCommand cmd = new SqlCommand(Query, conn);
@@ -77,7 +79,7 @@ namespace QuanLyCuaHangGiaDung.Controller
         {
             try
             {
-                SqlConnection conn = new SqlConnection(connect);
+                SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(Query, conn);
                 int sl = cmd.ExecuteNonQuery();
@@ -97,7 +99,7 @@ namespace QuanLyCuaHangGiaDung.Controller
             {
                 List<NhanVien> data = new List<NhanVien>();
 
-                SqlConnection conn = new SqlConnection(connect);
+                SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(Query, conn);
                 SqlDataReader dr = cmd.ExecuteReader();
@@ -130,7 +132,7 @@ namespace QuanLyCuaHangGiaDung.Controller
             {
                 List<NhanVien> data = new List<NhanVien>();
 
-                SqlConnection conn = new SqlConnection(connect);
+                SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
                 string Query = $"SELECT * FROM NhanVien ORDER BY {sapxep}";
                 SqlCommand cmd = new SqlCommand(Query, conn);
@@ -163,7 +165,7 @@ namespace QuanLyCuaHangGiaDung.Controller
             try
             {
                 string Query = $"SELECT COUNT(*) FROM NhanVien WHERE MaNV = N'{manv}'";
-                SqlConnection conn = new SqlConnection(connect);
+                SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(Query, conn);
                 int sl = (int)cmd.ExecuteScalar();

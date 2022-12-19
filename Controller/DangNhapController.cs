@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyCuaHangGiaDung.ConnectDB;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,12 +12,13 @@ namespace QuanLyCuaHangGiaDung.Controller
 {
     public class DangNhapController
     {
-        private string connect = @"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI";
+        //private string connect = @"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI";
+        Connect cn = new Connect();
         public int DangNhap(string Query)
         {
             try
             {
-                SqlConnection conn = new SqlConnection(connect);
+                SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(Query, conn);
                 int sl = (int)cmd.ExecuteScalar();
@@ -41,6 +43,31 @@ namespace QuanLyCuaHangGiaDung.Controller
                 result += buffer[i].ToString("x2");
             }
             return result;
+        }
+        public bool checkQuyen(string tk)
+        {
+            try
+            {
+                SqlConnection conn = cn.ConnectDataBase();
+                conn.Open();
+                string Query = $"SELECT COUNT(*) FROM TaiKhoan WHERE TaiKhoan = '{tk}' AND Quyen = 'admin'";
+                SqlCommand cmd = new SqlCommand(Query, conn);
+                int sl = (int)cmd.ExecuteScalar();
+                conn.Close();
+                if (sl == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi: " + ex.Message);
+            }
+            return false;
         }
     }
 }

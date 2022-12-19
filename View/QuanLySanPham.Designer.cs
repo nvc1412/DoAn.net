@@ -39,6 +39,7 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtTenlsp = new System.Windows.Forms.TextBox();
             this.cbDvt = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTensp = new System.Windows.Forms.TextBox();
@@ -76,7 +77,9 @@
             this.txtTimkiemLoai = new System.Windows.Forms.TextBox();
             this.btnLammoiLoai = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
-            this.txtTenlsp = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtTenncc = new System.Windows.Forms.TextBox();
+            this.cbMancc = new System.Windows.Forms.ComboBox();
             this.tabSanpham.SuspendLayout();
             this.tabDssanpham.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -236,6 +239,14 @@
             this.groupBox3.TabIndex = 17;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin sản phẩm";
+            // 
+            // txtTenlsp
+            // 
+            this.txtTenlsp.Enabled = false;
+            this.txtTenlsp.Location = new System.Drawing.Point(140, 146);
+            this.txtTenlsp.Name = "txtTenlsp";
+            this.txtTenlsp.Size = new System.Drawing.Size(118, 22);
+            this.txtTenlsp.TabIndex = 15;
             // 
             // cbDvt
             // 
@@ -533,6 +544,9 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.cbMancc);
+            this.groupBox7.Controls.Add(this.txtTenncc);
+            this.groupBox7.Controls.Add(this.label5);
             this.groupBox7.Controls.Add(this.txtMaloai);
             this.groupBox7.Controls.Add(this.label11);
             this.groupBox7.Controls.Add(this.label12);
@@ -671,13 +685,33 @@
             this.label15.TabIndex = 1;
             this.label15.Text = "Tìm kiếm:";
             // 
-            // txtTenlsp
+            // label5
             // 
-            this.txtTenlsp.Enabled = false;
-            this.txtTenlsp.Location = new System.Drawing.Point(140, 146);
-            this.txtTenlsp.Name = "txtTenlsp";
-            this.txtTenlsp.Size = new System.Drawing.Size(118, 22);
-            this.txtTenlsp.TabIndex = 15;
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label5.Location = new System.Drawing.Point(23, 219);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(112, 16);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Mã nhà cung cấp:";
+            // 
+            // txtTenncc
+            // 
+            this.txtTenncc.Enabled = false;
+            this.txtTenncc.Location = new System.Drawing.Point(150, 244);
+            this.txtTenncc.Name = "txtTenncc";
+            this.txtTenncc.Size = new System.Drawing.Size(107, 22);
+            this.txtTenncc.TabIndex = 9;
+            // 
+            // cbMancc
+            // 
+            this.cbMancc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMancc.FormattingEnabled = true;
+            this.cbMancc.Location = new System.Drawing.Point(150, 216);
+            this.cbMancc.Name = "cbMancc";
+            this.cbMancc.Size = new System.Drawing.Size(107, 24);
+            this.cbMancc.TabIndex = 10;
+            this.cbMancc.SelectedIndexChanged += new System.EventHandler(this.cbMancc_SelectedIndexChanged);
             // 
             // QuanLySanPham
             // 
@@ -761,5 +795,8 @@
         private System.Windows.Forms.TextBox txtMaloai;
         private System.Windows.Forms.TextBox txtTensp;
         private System.Windows.Forms.TextBox txtTenlsp;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtTenncc;
+        private System.Windows.Forms.ComboBox cbMancc;
     }
 }

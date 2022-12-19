@@ -32,6 +32,7 @@ namespace QuanLyCuaHangGiaDung.View
             cbMasp.DataSource = hd.getDatacomboSP();
             txtSoluong.Text = null;
             cbManv.Enabled = false;
+            cbMakh.Enabled = false;
             dateNgayban.Enabled = false;
             dgvHoadon.DataSource = hd.getDataHD(txtMahd.Text);
 
@@ -44,10 +45,18 @@ namespace QuanLyCuaHangGiaDung.View
             txtTennv.Text = hd.getTenNV(cbManv.Text);
         }
 
+        private void cbMakh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtTenkh.Text = hd.getTenKH(cbMakh.Text);
+        }
+
         private void QuanLyHoaDon_Load(object sender, EventArgs e)
         {
             cbManv.DisplayMember = "MaNV";
             cbManv.DataSource = hd.getDatacomboNV();
+
+            cbMakh.DisplayMember = "MaKH";
+            cbMakh.DataSource = hd.getDatacomboKH();
 
             cbMasp.DisplayMember = "MaSP";
             cbMasp.DataSource = hd.getDatacomboSP();
@@ -79,7 +88,7 @@ namespace QuanLyCuaHangGiaDung.View
             }
             else
             {
-                string Query = $"INSERT INTO HoaDon(MaHD, NgayBan, MaNV) Values(N'{txtMahd.Text}', N'{dateNgayban.Text}', N'{cbManv.Text}')" +
+                string Query = $"INSERT INTO HoaDon(MaHD, NgayBan, MaNV, MaKH) Values(N'{txtMahd.Text}', N'{dateNgayban.Text}', N'{cbManv.Text}', N'{cbMakh.Text}')" +
                     $"INSERT INTO CTHoaDon(MaHD, MaSP, SoLuong, DonGia) Values(N'{txtMahd.Text}', N'{cbMasp.Text}', N'{txtSoluong.Text}', N'{txtDongia.Text}')";
                 int sl = hd.ThemSuaXoaHD(Query);
                 if (sl > 0)
@@ -137,6 +146,7 @@ namespace QuanLyCuaHangGiaDung.View
             txtSoluong.Text = null;
             txtMahd.Text = null;
             cbManv.Enabled = true;
+            cbMakh.Enabled = true;
             dateNgayban.Enabled = true;
             dgvHoadon.DataSource = null;
             lbTongtien.Text = "0 đ";

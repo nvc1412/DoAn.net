@@ -1,4 +1,5 @@
-﻿using QuanLyCuaHangGiaDung.Model;
+﻿using QuanLyCuaHangGiaDung.ConnectDB;
+using QuanLyCuaHangGiaDung.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -11,15 +12,15 @@ namespace QuanLyCuaHangGiaDung.Controller
 {
     public class HoaDonController
     {
-        private string connect = @"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI";
-
+        //private string connect = @"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI";
+        Connect cn = new Connect();
         public double getTongTien(string mahd)
         {
             try
             {
                 double tongtien = 0;
 
-                SqlConnection conn = new SqlConnection(connect);
+                SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
                 string Query = $"SELECT HoaDon.*, CTHoaDon.MaSP, SanPham.TenSP, CTHoaDon.SoLuong, CTHoaDon.DonGia, CTHoaDon.SoLuong*CTHoaDon.DonGia AS ThanhTien FROM HoaDon, CTHoaDon, SanPham WHERE HoaDon.MaHD = CTHoaDon.MaHD AND CTHoaDon.MaSP = SanPham.MaSP AND HoaDon.MaHD = '{mahd}'";
                 SqlCommand cmd = new SqlCommand(Query, conn);
@@ -44,7 +45,7 @@ namespace QuanLyCuaHangGiaDung.Controller
             {
                 List<HoaDon> data = new List<HoaDon>();
 
-                SqlConnection conn = new SqlConnection(connect);
+                SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
                 string Query = $"SELECT HoaDon.*, CTHoaDon.MaSP, SanPham.TenSP, CTHoaDon.SoLuong, CTHoaDon.DonGia, CTHoaDon.SoLuong*CTHoaDon.DonGia AS ThanhTien FROM HoaDon, CTHoaDon, SanPham WHERE HoaDon.MaHD = CTHoaDon.MaHD AND CTHoaDon.MaSP = SanPham.MaSP AND HoaDon.MaHD = '{mahd}'";
                 SqlCommand cmd = new SqlCommand(Query, conn);
@@ -78,7 +79,7 @@ namespace QuanLyCuaHangGiaDung.Controller
             {
                 List<NhanVien> data = new List<NhanVien>();
 
-                SqlConnection conn = new SqlConnection(connect);
+                SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
                 string Query = "SELECT MaNV FROM NhanVien";
                 SqlCommand cmd = new SqlCommand(Query, conn);
@@ -99,13 +100,40 @@ namespace QuanLyCuaHangGiaDung.Controller
             return null;
         }
 
+        public List<KhachHang> getDatacomboKH()
+        {
+            try
+            {
+                List<KhachHang> data = new List<KhachHang>();
+
+                SqlConnection conn = cn.ConnectDataBase();
+                conn.Open();
+                string Query = "SELECT MaKH FROM KhachHang";
+                SqlCommand cmd = new SqlCommand(Query, conn);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    KhachHang obj = new KhachHang();
+                    obj.MaKH = (string)dr["MaKH"];
+                    data.Add(obj);
+                }
+                conn.Close();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi: " + ex.Message);
+            }
+            return null;
+        }
+
         public List<SanPham> getDatacomboSP()
         {
             try
             {
                 List<SanPham> data = new List<SanPham>();
 
-                SqlConnection conn = new SqlConnection(connect);
+                SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
                 string Query = "SELECT MaSP FROM SanPham";
                 SqlCommand cmd = new SqlCommand(Query, conn);
@@ -132,7 +160,7 @@ namespace QuanLyCuaHangGiaDung.Controller
             {
                 List<HoaDon> data = new List<HoaDon>();
 
-                SqlConnection conn = new SqlConnection(connect);
+                SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
                 string Query = "SELECT MaHD FROM HoaDon";
                 SqlCommand cmd = new SqlCommand(Query, conn);
@@ -159,7 +187,7 @@ namespace QuanLyCuaHangGiaDung.Controller
             string tennv = "";
             try
             {
-                SqlConnection conn = new SqlConnection(connect);
+                SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
                 string Query = $"SELECT TenNV FROM NhanVien WHERE MaNV = N'{manv}'";
                 SqlCommand cmd = new SqlCommand(Query, conn);
@@ -178,12 +206,36 @@ namespace QuanLyCuaHangGiaDung.Controller
             return tennv;
         }
 
+        public string getTenKH(string makh)
+        {
+            string tenkh = "";
+            try
+            {
+                SqlConnection conn = cn.ConnectDataBase();
+                conn.Open();
+                string Query = $"SELECT TenKH FROM KhachHang WHERE MaKH = N'{makh}'";
+                SqlCommand cmd = new SqlCommand(Query, conn);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    tenkh = (string)dr["TenKH"];
+                }
+                conn.Close();
+                return tenkh;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi: " + ex.Message);
+            }
+            return tenkh;
+        }
+
         public string getTenSP(string masp)
         {
             string tensp = "";
             try
             {
-                SqlConnection conn = new SqlConnection(connect);
+                SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
                 string Query = $"SELECT TenSP FROM SanPham WHERE MaSP = N'{masp}'";
                 SqlCommand cmd = new SqlCommand(Query, conn);
@@ -207,7 +259,7 @@ namespace QuanLyCuaHangGiaDung.Controller
             string dvt = "";
             try
             {
-                SqlConnection conn = new SqlConnection(connect);
+                SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
                 string Query = $"SELECT DVT FROM SanPham WHERE MaSP = N'{masp}'";
                 SqlCommand cmd = new SqlCommand(Query, conn);
@@ -231,7 +283,7 @@ namespace QuanLyCuaHangGiaDung.Controller
             string dongia = "";
             try
             {
-                SqlConnection conn = new SqlConnection(connect);
+                SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
                 string Query = $"SELECT GiaBan FROM SanPham WHERE MaSP = N'{masp}'";
                 SqlCommand cmd = new SqlCommand(Query, conn);
@@ -254,7 +306,7 @@ namespace QuanLyCuaHangGiaDung.Controller
         {
             try
             {
-                SqlConnection conn = new SqlConnection(connect);
+                SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(Query, conn);
                 int sl = cmd.ExecuteNonQuery();
@@ -273,7 +325,7 @@ namespace QuanLyCuaHangGiaDung.Controller
             try
             {
                 string Query = $"SELECT COUNT(*) FROM HoaDon WHERE MaHD = N'{mahd}'";
-                SqlConnection conn = new SqlConnection(connect);
+                SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(Query, conn);
                 int sl = (int)cmd.ExecuteScalar();
@@ -292,7 +344,7 @@ namespace QuanLyCuaHangGiaDung.Controller
             try
             {
                 string Query = $"SELECT COUNT(*) FROM CTHoaDon WHERE MaSP = N'{masp}' AND MaHD = N'{mahd}' ";
-                SqlConnection conn = new SqlConnection(connect);
+                SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(Query, conn);
                 int sl = (int)cmd.ExecuteScalar();

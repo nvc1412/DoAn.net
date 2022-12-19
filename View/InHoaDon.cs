@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using Microsoft.Reporting.WinForms;
+using QuanLyCuaHangGiaDung.ConnectDB;
 
 namespace QuanLyCuaHangGiaDung.View
 {
     public partial class InHoaDon : Form
     {
-        private string connect = @"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI";
+        //private string connect = @"Data Source=localhost;Initial Catalog=CuaHangGiaDungKimNgan;Integrated Security=SSPI";
+        Connect cn = new Connect();
         private string mahd;
 
         public InHoaDon(string mahd)
@@ -33,7 +35,7 @@ namespace QuanLyCuaHangGiaDung.View
 
             try
             {
-                SqlConnection conn = new SqlConnection(connect);
+                SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
                 string Query = $"SELECT HoaDon.*, CTHoaDon.MaSP, SanPham.TenSP, CTHoaDon.SoLuong, CTHoaDon.DonGia, CTHoaDon.SoLuong*CTHoaDon.DonGia AS ThanhTien FROM HoaDon, CTHoaDon, SanPham WHERE HoaDon.MaHD = CTHoaDon.MaHD AND CTHoaDon.MaSP = SanPham.MaSP AND HoaDon.MaHD = '{mahd}'";
                 SqlDataAdapter adapter = new SqlDataAdapter(Query, conn);

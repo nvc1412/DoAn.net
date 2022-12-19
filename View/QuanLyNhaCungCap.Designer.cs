@@ -158,6 +158,7 @@
             this.btnXuatexcel.Text = "Xuất Excel";
             this.btnXuatexcel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXuatexcel.UseVisualStyleBackColor = true;
+            this.btnXuatexcel.Click += new System.EventHandler(this.btnXuatexcel_Click);
             // 
             // btnThem
             // 
@@ -171,6 +172,7 @@
             this.btnThem.TabIndex = 8;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnSua
             // 
@@ -184,6 +186,7 @@
             this.btnSua.TabIndex = 9;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXoa
             // 
@@ -197,6 +200,7 @@
             this.btnXoa.TabIndex = 6;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnLammoi
             // 
@@ -211,6 +215,7 @@
             this.btnLammoi.Text = "Làm mới";
             this.btnLammoi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLammoi.UseVisualStyleBackColor = true;
+            this.btnLammoi.Click += new System.EventHandler(this.btnLammoi_Click);
             // 
             // groupBox3
             // 
@@ -236,6 +241,7 @@
             this.dgvNhacungcap.RowTemplate.Height = 24;
             this.dgvNhacungcap.Size = new System.Drawing.Size(1055, 483);
             this.dgvNhacungcap.TabIndex = 0;
+            this.dgvNhacungcap.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhacungcap_CellClick);
             // 
             // txtTimkiem
             // 
@@ -276,12 +282,13 @@
             this.cbSapxep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSapxep.FormattingEnabled = true;
             this.cbSapxep.Items.AddRange(new object[] {
-            "Theo mã",
-            "Theo tên"});
+            "Theo mã tăng dần",
+            "Theo mã giảm dần"});
             this.cbSapxep.Location = new System.Drawing.Point(857, 25);
             this.cbSapxep.Name = "cbSapxep";
             this.cbSapxep.Size = new System.Drawing.Size(135, 24);
             this.cbSapxep.TabIndex = 4;
+            this.cbSapxep.SelectedIndexChanged += new System.EventHandler(this.cbSapxep_SelectedIndexChanged);
             // 
             // btnTimkiem
             // 
@@ -296,6 +303,7 @@
             this.btnTimkiem.Text = "Tìm kiếm";
             this.btnTimkiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnTimkiem.UseVisualStyleBackColor = true;
+            this.btnTimkiem.Click += new System.EventHandler(this.btnTimkiem_Click);
             // 
             // label2
             // 
@@ -337,6 +345,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "QuanLyNhaCungCap";
             this.Text = "Quản lý nhà cung cấp";
+            this.Load += new System.EventHandler(this.QuanLyNhaCungCap_Load);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
