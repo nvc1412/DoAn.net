@@ -37,7 +37,8 @@ namespace QuanLyCuaHangGiaDung.View
             {
                 SqlConnection conn = cn.ConnectDataBase();
                 conn.Open();
-                string Query = $"SELECT HoaDon.*, CTHoaDon.MaSP, SanPham.TenSP, CTHoaDon.SoLuong, CTHoaDon.DonGia, CTHoaDon.SoLuong*CTHoaDon.DonGia AS ThanhTien FROM HoaDon, CTHoaDon, SanPham WHERE HoaDon.MaHD = CTHoaDon.MaHD AND CTHoaDon.MaSP = SanPham.MaSP AND HoaDon.MaHD = '{mahd}'";
+                string Query = $"SELECT HoaDon.*, CTHoaDon.MaSP, SanPham.TenSP, CTHoaDon.SoLuong, CTHoaDon.DonGia, CTHoaDon.SoLuong*CTHoaDon.DonGia AS ThanhTien " +
+                    $"FROM HoaDon, CTHoaDon, SanPham WHERE HoaDon.MaHD = CTHoaDon.MaHD AND CTHoaDon.MaSP = SanPham.MaSP AND HoaDon.MaHD = '{mahd}'";
                 SqlDataAdapter adapter = new SqlDataAdapter(Query, conn);
                 DataSet ds = new DataSet();
                 adapter.Fill(ds, "HoaDon");
